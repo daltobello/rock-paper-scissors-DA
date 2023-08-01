@@ -22,6 +22,10 @@ main {
 	justify-content: space-evenly;
 }
 
+.avatar {
+  font-size: 2em;
+}
+
 .game-board {
 	display: flex;
 	height: 100vh;
