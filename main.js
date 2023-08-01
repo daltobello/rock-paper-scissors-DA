@@ -9,6 +9,13 @@ var computerPlayer = document.querySelector(".computer-player")
 // functions
 
 
-
+function createPlayer(name, token, wins) {
+  var player = {
+    name: name,
+    token: token,
+    wins: wins
+  }
+  return player
+}
 
 
