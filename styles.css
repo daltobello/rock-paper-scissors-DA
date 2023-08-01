@@ -30,3 +30,13 @@ main {
 	align-items: center;
 	background-color: white;
 }
+
+.score-container {
+  display: flex;
+  width: 15vw;
+  height: 100vh;
+  font-size: 1.5em;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
