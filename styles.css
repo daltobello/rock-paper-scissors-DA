@@ -1,4 +1,4 @@
-* { background-color: rgba(255,0,0,.2); }
+/* * { background-color: rgba(255,0,0,.2); }
 * * { background-color: rgba(0,255,0,.2); }
 * * * { background-color: rgba(0,0,255,.2); }
 * * * * { background-color: rgba(255,0,255,.2); }
@@ -6,7 +6,7 @@
 * * * * * * { background-color: rgba(255,255,0,.2); }
 * * * * * * * { background-color: rgba(255,0,0,.2); }
 * * * * * * * * { background-color: rgba(0,255,0,.2); }
-* * * * * * * * * { background-color: rgba(0,0,255,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
 
 * {
   font-family: 'Inter', sans-serif;
@@ -36,8 +36,6 @@ main {
   background-color: #382633;
 }
 
-
-
 .score-container {
   display: flex;
   width: 15vw;
@@ -48,3 +46,9 @@ main {
   flex-wrap: wrap;
   align-items: center;
 }
+
+.score {
+  font-size: 1em;
+  margin-top: 6%;
+}
+
