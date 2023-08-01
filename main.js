@@ -1,6 +1,8 @@
 // querySelectors
 var humanPlayer = document.querySelector(".human-player")
 var computerPlayer = document.querySelector(".computer-player")
+var classicGameOption = document.querySelector(".classic")
+var difficultGameOption = document.querySelector(".difficult")
 
 // eventListeners
 
