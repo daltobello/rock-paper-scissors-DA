@@ -10,6 +10,7 @@
 
 * {
   font-family: 'Inter', sans-serif;
+  color: white;
   margin: 0;
 }
 
@@ -28,14 +29,17 @@ main {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	background-color: white;
+  background-color: #382633;
 }
+
+
 
 .score-container {
   display: flex;
   width: 15vw;
   height: 100vh;
   font-size: 1.5em;
+  background-color: #79536E;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
