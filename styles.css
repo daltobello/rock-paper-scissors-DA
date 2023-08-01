@@ -48,7 +48,7 @@ main {
   display: flex;
   height: 100vh;
   width: 70vw;
-  background-color: #382633;
+  background-color: #493241;
   align-items: center;
   flex-direction: column;
 }
@@ -69,13 +69,19 @@ main {
   margin-top: 6%;
 }
 
-.game-type {
-  height: 30%;
-  width: 25%;
-  background-color: #493241;
-  border: solid red 3px;
+.classic,
+.difficult {
+  height:24%;
+  width: 26%;
+  background-color: #382633;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+}
+
+.difficult {
+  height:28%;
+  width: 26%;
+  margin-top: 3%;
 }
