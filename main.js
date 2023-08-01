@@ -5,7 +5,9 @@ var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
 
 // eventListeners
-
+classicGameOption.addEventListener("click", function(){
+  hideElement(classicGameOption)
+})
 // global variables
 
 // functions
@@ -20,4 +22,6 @@ function createPlayer(name, token, wins) {
   return player
 }
 
-
+function hideElement(element) {
+  element.classList.add("hidden")
+}
