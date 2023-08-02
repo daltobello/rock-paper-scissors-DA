@@ -53,11 +53,11 @@ function takeTurn(humanPlayer, computerPlayer) {
   } else {
     computerMove = getRandomComputerMove()
     humanMove = gameBoard[0]
-    checkForWIns(humanMove, computerMove)
+    checkForWins(humanMove, computerMove)
     return
   }
 
-  checkForWIns(humanMove, computerMove)
+  checkForWins(humanMove, computerMove)
 
   if (humanMove === computerMove) {
     checkForDraw()
@@ -67,7 +67,7 @@ function checkForDraw() {
   console.log("It's a draw")
 }
 
-function checkForWIns(humanMove, computerMove) {
+function checkForWins(humanMove, computerMove) {
   var winningMoves = {
     rock: "scissors",
     paper: "rock",
