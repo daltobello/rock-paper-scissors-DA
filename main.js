@@ -36,6 +36,19 @@ function createGame() {
   } else {
     gameBoard = ["Rock", "Paper", "Scissors", "Something", "Something"]
   }
+  takeTurn(humanPlayer, computerPlayer)
+}
+
+function takeTurn(humanPlayer, computerPlayer) {
+  if (gameBoard.length === 3) {
+    gameType = "Classic" // 
+  }
+  if (humanPlayer.turn) {
+    var choice = classicGameBoard[0]
+    !humanPlayer.turn
+    computerPlayer.turn = true
+
+  }
 }
 
 
