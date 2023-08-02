@@ -53,6 +53,8 @@ function takeTurn(humanPlayer, computerPlayer) {
   checkForWIns(humanChoice, computerChoice)
 }
 
+
+
 function checkForWIns(humanChoice, computerChoice) {
   if (humanChoice === "paper" or rock) // if rock or scissors draw or win. 
   // if win, congrats, increase wins
@@ -68,6 +70,10 @@ function checkForWIns(humanChoice, computerChoice) {
 
 }
 
+// randomize the computer choice. 
+//  function getRandomIndex(array) {
+  // gameBoard
+// }
 
 
 // GAME LOGIC
@@ -79,9 +85,8 @@ function checkForWIns(humanChoice, computerChoice) {
 //  else if player2
 // if player1  is paper and player2 is rock, player1 wins
 
-
-
-
-
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array)
+}
 
 
