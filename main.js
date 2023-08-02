@@ -46,12 +46,13 @@ function takeTurn(humanPlayer, computerPlayer) {
   }
   if (humanPlayer.turn) {
     var humanMove = gameBoard[0]
-    !humanPlayer.turn
+    humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
+    checkForWIns(humanMove, computerMove)
   } else {
     var computerMove = getRandomComputerMove()
+    checkForWIns(humanMove, computerMove)
   }
-  checkForWIns(humanMove, computerMove)
 }
 
 function checkForWIns(humanMove, computerMove) {
