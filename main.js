@@ -47,19 +47,25 @@ function takeTurn(humanPlayer, computerPlayer) {
     var choice = classicGameBoard[0]
     !humanPlayer.turn
     computerPlayer.turn = true
-
   }
+  checkForWIns(choice)
 }
 
+function checkForWIns(humanChoice, computerChoice) {
+  if (humanChoice === paper or rock) // if rock or scissors draw or win. 
+  // if win, congrats, increase wins
+  // if not, invoke checkFordDraw function
 
-
-  // use  var choice = classicGameBoard[0] as arg for check for wins, and check for draws. then evaluate who, 
+    // use  var choice = classicGameBoard[0] as arg for check for wins, and check for draws. then evaluate who, 
 
   // player choose option from classic gameboard
   // then computer chooses
   // after every win, check for win and check for draw.
   // if win, update the player win count.
   // if draw, take another turn 
+
+}
+
 
 
 // GAME LOGIC
