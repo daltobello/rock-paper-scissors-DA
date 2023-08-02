@@ -48,33 +48,13 @@ function takeTurn(humanPlayer, computerPlayer) {
     !humanPlayer.turn
     computerPlayer.turn = true
   } else {
-    var computerChoice = getRandomComputerMove()
+    var computerMove = getRandomComputerMove()
   }
-  checkForWIns(humanChoice, computerChoice)
+  checkForWIns(humanMove, computerMove)
 }
 
-
-
-
-function getRandomCover() {
-  var getRandImgIndex = getRandomIndex(covers)
-  var getRandTitleIndex = getRandomIndex(titles)
-  var getRandTagIndex1 = getRandomIndex(descriptors)
-  var getRandTagIndex2 = getRandomIndex(descriptors)
-  var randImg = covers[getRandImgIndex]
-  var randTitle = titles[getRandTitleIndex]
-  var randTag1 = descriptors[getRandTagIndex1]
-  var randTag2 = descriptors[getRandTagIndex2]
-  return createCover(randImg, randTitle, randTag1, randTag2)
-}
-
-
-
-
-
-
-function checkForWIns(humanChoice, computerChoice) {
-  if (humanChoice === "paper" or rock) // if rock or scissors draw or win. 
+function checkForWIns(humanMove, computerMove) {
+  if (humanMove === "paper" or rock) // if rock or scissors draw or win. 
   // if win, congrats, increase wins
   // if not, invoke checkFordDraw function
 
