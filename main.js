@@ -56,7 +56,7 @@ function takeTurn(humanPlayer, computerPlayer) {
     checkForWIns(humanMove, computerMove)
     return
   }
-  
+
   checkForWIns(humanMove, computerMove)
 
   if (humanMove === computerMove) {
@@ -78,11 +78,17 @@ function checkForWIns(humanMove, computerMove) {
     // invoke draw function
   } else if (winningMoves[humanMove] === computerMove) {
     humanPlayer.wins++
+    resetGame()
   } else if(winningMoves[computerMove] === humanMove){
     computerPlayer.wins++
+    resetGame()
   }
 }
 
+function resetGame() {
+  humanPlayer.turn = true
+  computerPlayer.turn = false
+}
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
