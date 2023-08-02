@@ -1,6 +1,6 @@
 // querySelectors
-var humanPlayer = document.querySelector(".human-player")
-var computerPlayer = document.querySelector(".computer-player")
+// var humanPlayer = document.querySelector(".human-player")
+// var computerPlayer = document.querySelector(".computer-player")
 var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
 
@@ -10,16 +10,14 @@ classicGameOption.addEventListener("click", function () {
 })
 
 // global variables
-var gameBoard;
+var gameBoard = []
 var gameType;
-var humanPlayer;
-var computerPlayer;
+
 
 // functions
-function createPlayer(name, token) {
+function createPlayer(name) {
   var player = {
     name: name,
-    token: token,
     turn: true,
     wins: 0
   }
@@ -30,31 +28,44 @@ function createGame() {
   // call on a button click,
   // player inputs name and token
   gameType = "Classic"
-  var humanPlayer = createPlayer("human", "token", true)
-  var computerPlayer = createPlayer("computer", "token", false)
+  var humanPlayer = createPlayer("human")
+  var computerPlayer = createPlayer("computer")
   if (gameType === "Classic") {
-    gameBoard = ["Rock", "Paper", "Scissors"]
+    gameBoard = ["rock", "paper", "scissors"]
   } else {
-    gameBoard = ["Rock", "Paper", "Scissors", "Something", "Something"]
+    gameBoard = ["rock", "paper", "scissors", "something", "something"]
   }
   takeTurn(humanPlayer, computerPlayer)
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
-  if (gameBoard.length === 3) {
-    gameType = "Classic" 
-  }
+  var humanMove;
+  var computerMove;
   if (humanPlayer.turn) {
-    var humanMove = gameBoard[0]
-    !humanPlayer.turn
+    humanMove = gameBoard[0]
+    humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
+    computerMove = getRandomComputerMove()
   } else {
-    var computerMove = getRandomComputerMove()
+    computerMove = getRandomComputerMove()
+    humanMove = gameBoard[0]
   }
-  checkForWIns(humanMove, computerMove)
 }
 
-function checkForWIns(humanMove, computerMove) {
+checkGameResults(humanMove, computerMove) {
+  if (humanMove === computerMove) {
+    checkForDraw()
+  } else {
+    checkForWins(humanMove, computerMove)
+  }
+} 
+
+function checkForDraw() {
+  console.log("It's a draw")
+}
+
+function checkForWins(humanMove, computerMove) {
+  
   var winningMoves = {
     rock: "scissors",
     paper: "rock",
@@ -62,14 +73,20 @@ function checkForWIns(humanMove, computerMove) {
   }
 
   if (humanMove === computerMove) {
-    // invoke draw function
+    checkForDraw()
   } else if (winningMoves[humanMove] === computerMove) {
     humanPlayer.wins++
+    resetGame()
   } else if(winningMoves[computerMove] === humanMove){
     computerPlayer.wins++
+    resetGame()
   }
 }
 
+function resetGame() {
+  humanPlayer.turn = true
+  computerPlayer.turn = false
+}
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
@@ -77,7 +94,10 @@ function getRandomComputerMove() {
 }
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array)
+  return Math.floor(Math.random() * array.length)
 }
 
 
+// if (gameBoard.length === 3) {
+//   gameType = "Classic" 
+// }
