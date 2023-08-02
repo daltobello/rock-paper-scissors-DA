@@ -43,7 +43,7 @@ function takeTurn(humanPlayer, computerPlayer) {
     gameType = "Classic" 
   }
   if (humanPlayer.turn) {
-    var humanChoice = gameBoard[0]
+    var humanMove = gameBoard[0]
     !humanPlayer.turn
     computerPlayer.turn = true
   } else {
