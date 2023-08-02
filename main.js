@@ -50,9 +50,10 @@ function takeTurn(humanPlayer, computerPlayer) {
     computerMove = getRandomComputerMove()
     humanMove = gameBoard[0]
   }
+  checkGameResults(humanMove, computerMove)
 }
 
-checkGameResults(humanMove, computerMove) {
+function checkGameResults(humanMove, computerMove) {
   if (humanMove === computerMove) {
     checkForDraw()
   } else {
