@@ -55,6 +55,24 @@ function takeTurn(humanPlayer, computerPlayer) {
 
 
 
+
+function getRandomCover() {
+  var getRandImgIndex = getRandomIndex(covers)
+  var getRandTitleIndex = getRandomIndex(titles)
+  var getRandTagIndex1 = getRandomIndex(descriptors)
+  var getRandTagIndex2 = getRandomIndex(descriptors)
+  var randImg = covers[getRandImgIndex]
+  var randTitle = titles[getRandTitleIndex]
+  var randTag1 = descriptors[getRandTagIndex1]
+  var randTag2 = descriptors[getRandTagIndex2]
+  return createCover(randImg, randTitle, randTag1, randTag2)
+}
+
+
+
+
+
+
 function checkForWIns(humanChoice, computerChoice) {
   if (humanChoice === "paper" or rock) // if rock or scissors draw or win. 
   // if win, congrats, increase wins
@@ -84,6 +102,12 @@ function checkForWIns(humanChoice, computerChoice) {
 // if player1 is scissors and player2 is paper, player1 wins
 //  else if player2
 // if player1  is paper and player2 is rock, player1 wins
+
+function getRandomComputerMove() {
+  var randGameBoardIndex = getRandomIndex(gameBoard)
+  var randComputerMove = gameBoard[randGameBoardIndex]
+  return randComputerMove
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array)
