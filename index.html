@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheets" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -12,29 +12,40 @@
   <title>Rock Paper Scissors</title>
 </head>
 <body>
-  <section class="human-container">
-    <figure class="human-icon">👨🏻‍🌾</figure>
-    <h3>Human</h3>
-    <h4>Wins: 0</h4>
-  </section>
   <main>
-    <h1>Rock, Paper, Scissors</h1>
-    <h2>Choose your game!</h2>
+    <section class="score-container human">
+      <figure class="avatar">👨🏻‍🌾</figure>
+      <h3>Human</h3>
+      <h4 class="score">Wins: 0</h4>
+    </section>
     <section class="game-board">
-      <article class="classic-game">
-        <h5 class="game-type">Classic</h5>
-        <p>rock > scissors paper > rock scissors > paper</p>
+      <header class="title-container">
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>Choose your game!</h2>
+      </header>
+      <article class="game-type classic">
+        <h5 class="complexity">🪨Classic✂️</h5>
+        <p>
+          rock > scissors <br>
+          paper > rock <br>
+          scissors > paper <br>
+        </p>
       </article>
-      <article class="difficult-game">
-        <h5 class="game-type">Difficult</h5>
-        <p>rock > scissors & lizard paper > rock & alien scissors > paper & alien alien > scissors & rock</p>
+      <article class="game-type difficult">
+        <h5 class="complexity">🪴Difficult🚜</h5>
+        <p>
+          rock > scissors & plant <br>
+          paper > rock & tractor <br>
+          scissors > paper & plant <br>
+          plant > scissors & rock <br>
+        </p>
       </article>
     </section>
+    <section class="score-container computer">
+      <figure class="avatar">💻</figure>
+      <h3>Computer</h3>
+      <h4 class="score">Wins: 0</h4>
   </main>
-  <section class="computer-container">
-    <figure class="computer-icon">💻</figure>
-    <h3>Human</h3>
-    <h4>Wins: 0</h4>
 </body>
 <script src="main.js"></script>
 </html>

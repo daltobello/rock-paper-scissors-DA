@@ -1,0 +1,84 @@
+* {
+  font-family: 'Inter', sans-serif;
+  color: white;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.3em;
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 200;
+  margin-bottom: 15%;
+}
+
+main {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-evenly;
+}
+
+.avatar {
+  font-size: 2em;
+  margin-top: 18%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-board {
+  display: flex;
+  height: 100vh;
+  width: 70vw;
+  background-color: #493241;
+  align-items: center;
+  flex-direction: column;
+}
+
+.score-container {
+  display: flex;
+  width: 15vw;
+  height: 100vh;
+  font-size: 1.5em;
+  background-color: #79536E;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.score {
+  font-size: 1em;
+  margin-top: 6%;
+}
+
+.classic,
+.difficult {
+  height:24%;
+  width: 26%;
+  background-color: #382633;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.difficult {
+  height:28%;
+  width: 26%;
+  margin-top: 3%;
+}
+
+.complexity {
+  font-size: 1.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
