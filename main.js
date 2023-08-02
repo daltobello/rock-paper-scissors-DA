@@ -1,6 +1,6 @@
 // querySelectors
-var humanPlayer = document.querySelector(".human-player")
-var computerPlayer = document.querySelector(".computer-player")
+// var humanPlayer = document.querySelector(".human-player")
+// var computerPlayer = document.querySelector(".computer-player")
 var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
 
@@ -16,7 +16,7 @@ var humanPlayer;
 var computerPlayer;
 
 // functions
-function createPlayer(name, token) {
+function createPlayer(name) {
   var player = {
     name: name,
     token: token,
