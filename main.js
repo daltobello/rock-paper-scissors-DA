@@ -19,7 +19,6 @@ var computerPlayer;
 function createPlayer(name) {
   var player = {
     name: name,
-    token: token,
     turn: true,
     wins: 0
   }
@@ -78,7 +77,7 @@ function getRandomComputerMove() {
 }
 
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array)
+  return Math.floor(Math.random() * array.length)
 }
 
 
