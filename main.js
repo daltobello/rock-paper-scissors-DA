@@ -75,7 +75,7 @@ function checkForWIns(humanMove, computerMove) {
   }
 
   if (humanMove === computerMove) {
-    // invoke draw function
+    checkForDraw()
   } else if (winningMoves[humanMove] === computerMove) {
     humanPlayer.wins++
     resetGame()
