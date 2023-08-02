@@ -42,6 +42,9 @@ function takeTurn(humanPlayer, computerPlayer) {
   if (gameBoard.length === 3) {
     gameType = "Classic" 
   }
+  var humanMove;
+  var computerMove;
+
   if (humanPlayer.turn) {
     humanMove = gameBoard[0]
     humanPlayer.turn = !humanPlayer.turn
@@ -53,7 +56,9 @@ function takeTurn(humanPlayer, computerPlayer) {
     checkForWIns(humanMove, computerMove)
     return
   }
+  
   checkForWIns(humanMove, computerMove)
+
   if (humanMove === computerMove) {
     checkForDraw()
   }
