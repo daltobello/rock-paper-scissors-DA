@@ -41,10 +41,10 @@ function createGame() {
 
 function takeTurn(humanPlayer, computerPlayer) {
   if (gameBoard.length === 3) {
-    gameType = "Classic" // 
+    gameType = "Classic" 
   }
   if (humanPlayer.turn) {
-    var choice = classicGameBoard[0]
+    var choice = gameBoard[0]
     !humanPlayer.turn
     computerPlayer.turn = true
   }
@@ -52,7 +52,7 @@ function takeTurn(humanPlayer, computerPlayer) {
 }
 
 function checkForWIns(humanChoice, computerChoice) {
-  if (humanChoice === paper or rock) // if rock or scissors draw or win. 
+  if (humanChoice === "paper" or rock) // if rock or scissors draw or win. 
   // if win, congrats, increase wins
   // if not, invoke checkFordDraw function
 
