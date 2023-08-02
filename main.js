@@ -39,12 +39,8 @@ function createGame() {
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
-  if (gameBoard.length === 3) {
-    gameType = "Classic" 
-  }
   var humanMove;
   var computerMove;
-
   if (humanPlayer.turn) {
     humanMove = gameBoard[0]
     humanPlayer.turn = !humanPlayer.turn
@@ -53,21 +49,23 @@ function takeTurn(humanPlayer, computerPlayer) {
   } else {
     computerMove = getRandomComputerMove()
     humanMove = gameBoard[0]
-    checkForWins(humanMove, computerMove)
-    return
-  }
-
-  checkForWins(humanMove, computerMove)
-
-  if (humanMove === computerMove) {
-    checkForDraw()
   }
 }
+
+checkGameResults(humanMove, computerMove) {
+  if (humanMove === computerMove) {
+    checkForDraw()
+  } else {
+    checkForWins(humanMove, computerMove)
+  }
+} 
+
 function checkForDraw() {
   console.log("It's a draw")
 }
 
 function checkForWins(humanMove, computerMove) {
+  
   var winningMoves = {
     rock: "scissors",
     paper: "rock",
@@ -100,3 +98,6 @@ function getRandomIndex(array) {
 }
 
 
+// if (gameBoard.length === 3) {
+//   gameType = "Classic" 
+// }
