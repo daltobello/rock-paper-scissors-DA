@@ -33,9 +33,9 @@ function createGame() {
   var humanPlayer = createPlayer("human")
   var computerPlayer = createPlayer("computer")
   if (gameType === "Classic") {
-    gameBoard = ["Rock", "Paper", "Scissors"]
+    gameBoard = ["rock", "paper", "scissors"]
   } else {
-    gameBoard = ["Rock", "Paper", "Scissors", "Something", "Something"]
+    gameBoard = ["rock", "paper", "scissors", "something", "something"]
   }
   takeTurn(humanPlayer, computerPlayer)
 }
