@@ -5,46 +5,57 @@ var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
 
 // eventListeners
-classicGameOption.addEventListener("click", function(){
+classicGameOption.addEventListener("click", function () {
   hideElement(classicGameOption)
 })
-// global variables
 
+// global variables
 var gameBoard;
-// assign gameboard to gameBoard function?
+var gameType;
 
 // functions
-
-
 function createPlayer(name, token) {
   var player = {
     name: name,
     token: token,
+    turn: true,
     wins: 0
   }
   return player
 }
 
-function createGame(player1, player2) {
-  // track the players turn
-  // keep track of the plays
-  // the game type
-  // that will tell us which game to turn
-  // call takeTurn function
+function createGame() {
+  // call on a button click,
+  // player inputs name and token
+  // invoke createPlayer again with hard coded 
+  gameType = "Classic"
+  var humanPlayer = createPlayer("human", "token", true)
+  var computerPlayer = createPlayer("computer", "token", false)
+  if (gameType === "Classic") {
+    gameBoard = ["Rock", "Paper", "Scissors"]
+  } else {
+    gameBoard = ["Rock", "Paper", "Scissors", "Something", "Something"]
+  }
 }
 
-// function takeTurn() {
 
-// }
+
+  // use  var choice = classicGameBoard[0] as arg for check for wins, and check for draws. then evaluate who, 
+
+  // player choose option from classic gameboard
+  // then computer chooses
+  // after every win, check for win and check for draw.
+  // if win, update the player win count.
+  // if draw, take another turn 
+
 
 // GAME LOGIC
 // rock beats scissors, scissors beat paper, and paper beats rock.
-
 // if player1 is rock and player2 is scissors, player1 wins
-        // else if player2 is paper, player2 wins
-            // else if player2 is 
+// else if player2 is paper, player2 wins
+// else if player2 is 
 // if player1 is scissors and player2 is paper, player1 wins
-      //  else if player2
+//  else if player2
 // if player1  is paper and player2 is rock, player1 wins
 
 
@@ -52,6 +63,4 @@ function createGame(player1, player2) {
 
 
 
-function hideElement(element) {
-  element.classList.add("hidden")
-}
+
