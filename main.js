@@ -10,10 +10,9 @@ classicGameOption.addEventListener("click", function () {
 })
 
 // global variables
-var gameBoard;
+var gameBoard = []
 var gameType;
-var humanPlayer;
-var computerPlayer;
+
 
 // functions
 function createPlayer(name) {
@@ -44,14 +43,23 @@ function takeTurn(humanPlayer, computerPlayer) {
     gameType = "Classic" 
   }
   if (humanPlayer.turn) {
-    var humanMove = gameBoard[0]
+    humanMove = gameBoard[0]
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
-    checkForWIns(humanMove, computerMove)
+    computerMove = getRandomComputerMove()
   } else {
-    var computerMove = getRandomComputerMove()
+    computerMove = getRandomComputerMove()
+    humanMove = gameBoard[0]
     checkForWIns(humanMove, computerMove)
+    return
   }
+  checkForWIns(humanMove, computerMove)
+  if (humanMove === computerMove) {
+    checkForDraw()
+  }
+}
+function checkForDraw() {
+  console.log("It's a draw")
 }
 
 function checkForWIns(humanMove, computerMove) {
