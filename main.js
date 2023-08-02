@@ -30,8 +30,8 @@ function createGame() {
   // call on a button click,
   // player inputs name and token
   gameType = "Classic"
-  var humanPlayer = createPlayer("human", "token", true)
-  var computerPlayer = createPlayer("computer", "token", false)
+  var humanPlayer = createPlayer("human")
+  var computerPlayer = createPlayer("computer")
   if (gameType === "Classic") {
     gameBoard = ["Rock", "Paper", "Scissors"]
   } else {
