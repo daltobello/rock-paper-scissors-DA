@@ -44,11 +44,13 @@ function takeTurn(humanPlayer, computerPlayer) {
     gameType = "Classic" 
   }
   if (humanPlayer.turn) {
-    var choice = gameBoard[0]
+    var humanChoice = gameBoard[0]
     !humanPlayer.turn
     computerPlayer.turn = true
+  } else {
+    var computerChoice = gameBoard[1]
   }
-  checkForWIns(choice)
+  checkForWIns(humanChoice, computerChoice)
 }
 
 function checkForWIns(humanChoice, computerChoice) {
