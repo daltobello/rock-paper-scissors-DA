@@ -48,7 +48,7 @@ function takeTurn(humanPlayer, computerPlayer) {
     !humanPlayer.turn
     computerPlayer.turn = true
   } else {
-    var computerChoice = gameBoard[1]
+    var computerChoice = getRandomComputerMove()
   }
   checkForWIns(humanChoice, computerChoice)
 }
@@ -105,8 +105,7 @@ function checkForWIns(humanChoice, computerChoice) {
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
-  var randComputerMove = gameBoard[randGameBoardIndex]
-  return randComputerMove
+  return  gameBoard[randGameBoardIndex]
 }
 
 function getRandomIndex(array) {
