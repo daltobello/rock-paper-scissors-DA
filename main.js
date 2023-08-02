@@ -27,7 +27,6 @@ function createPlayer(name, token) {
 function createGame() {
   // call on a button click,
   // player inputs name and token
-  // invoke createPlayer again with hard coded 
   gameType = "Classic"
   var humanPlayer = createPlayer("human", "token", true)
   var computerPlayer = createPlayer("computer", "token", false)
@@ -54,34 +53,30 @@ function takeTurn(humanPlayer, computerPlayer) {
 }
 
 function checkForWIns(humanMove, computerMove) {
-  if (humanMove === "paper" or rock) // if rock or scissors draw or win. 
-  // if win, congrats, increase wins
-  // if not, invoke checkFordDraw function
+  if (humanMove === "rock" && computerMove === "scissors") {
+    humanPlayer.wins++
+  } else if (humanMove === "scissors" && computerMove === "rock") {
+    computerPlayer.wins++
+  } else if (humanMove === "rock" && computerMove === "rock") {
+    // draw
+  }
 
-    // use  var choice = classicGameBoard[0] as arg for check for wins, and check for draws. then evaluate who, 
+  if (humanMove === "paper" && computerMove === "rock") {
+    humanPlayer.wins++
+  } else if (humanMove === "rock" && computerMove === "paper") {
+    computerPlayer.wins++
+  } else if (humanMove === "paper" && computerMove === "paper") {
+    // draw
+  }
 
-  // player choose option from classic gameboard
-  // then computer chooses
-  // after every win, check for win and check for draw.
-  // if win, update the player win count.
-  // if draw, take another turn 
-
+  if (humanMove === "scissors" && computerMove === "paper") {
+    humanPlayer.wins++
+  } else if (humanMove === "paper" && computerMove === "scissors") {
+    computerPlayer.wins++
+  } else if (humanMove === "scissors" && computerMove === "scissors") {
+    // draw
+  }
 }
-
-// randomize the computer choice. 
-//  function getRandomIndex(array) {
-  // gameBoard
-// }
-
-
-// GAME LOGIC
-// rock beats scissors, scissors beat paper, and paper beats rock.
-// if player1 is rock and player2 is scissors, player1 wins
-// else if player2 is paper, player2 wins
-// else if player2 is 
-// if player1 is scissors and player2 is paper, player1 wins
-//  else if player2
-// if player1  is paper and player2 is rock, player1 wins
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
