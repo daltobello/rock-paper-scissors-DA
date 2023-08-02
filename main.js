@@ -12,6 +12,8 @@ classicGameOption.addEventListener("click", function () {
 // global variables
 var gameBoard;
 var gameType;
+var humanPlayer;
+var computerPlayer;
 
 // functions
 function createPlayer(name, token) {
@@ -53,30 +55,21 @@ function takeTurn(humanPlayer, computerPlayer) {
 }
 
 function checkForWIns(humanMove, computerMove) {
-  if (humanMove === "rock" && computerMove === "scissors") {
-    humanPlayer.wins++
-  } else if (humanMove === "scissors" && computerMove === "rock") {
-    computerPlayer.wins++
-  } else if (humanMove === "rock" && computerMove === "rock") {
-    // draw
+  var winningMoves = {
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper"
   }
 
-  if (humanMove === "paper" && computerMove === "rock") {
+  if (humanMove === computerMove) {
+    // invoke draw function
+  } else if (winningMoves[humanMove] === computerMove) {
     humanPlayer.wins++
-  } else if (humanMove === "rock" && computerMove === "paper") {
+  } else if(winningMoves[computerMove] === humanMove){
     computerPlayer.wins++
-  } else if (humanMove === "paper" && computerMove === "paper") {
-    // draw
-  }
-
-  if (humanMove === "scissors" && computerMove === "paper") {
-    humanPlayer.wins++
-  } else if (humanMove === "paper" && computerMove === "scissors") {
-    computerPlayer.wins++
-  } else if (humanMove === "scissors" && computerMove === "scissors") {
-    // draw
   }
 }
+
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
