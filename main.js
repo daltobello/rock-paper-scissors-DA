@@ -39,8 +39,8 @@ function createGame() {
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
-  var humanMove;
-  var computerMove;
+  humanMove;
+  computerMove;
   if (humanPlayer.turn) {
     humanMove = gameBoard[0]
     humanPlayer.turn = !humanPlayer.turn
@@ -97,8 +97,3 @@ function getRandomComputerMove() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
-
-
-// if (gameBoard.length === 3) {
-//   gameType = "Classic" 
-// }
