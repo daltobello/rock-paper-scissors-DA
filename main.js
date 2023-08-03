@@ -12,6 +12,8 @@ classicGameOption.addEventListener("click", function () {
 // global variables
 var gameBoard = []
 var gameType;
+var humanPlayer;
+var computerPlayer;
 
 
 // functions
@@ -28,8 +30,8 @@ function createGame() {
   // call on a button click,
   // player inputs name and token
   gameType = "Classic"
-  var humanPlayer = createPlayer("human")
-  var computerPlayer = createPlayer("computer")
+  humanPlayer = createPlayer("human")
+  computerPlayer = createPlayer("computer")
   if (gameType === "Classic") {
     gameBoard = ["rock", "paper", "scissors"]
   } else {
@@ -47,8 +49,8 @@ function takeTurn(humanPlayer, computerPlayer) {
     computerPlayer.turn = true
     computerMove = getRandomComputerMove()
   } else {
-    computerMove = getRandomComputerMove()
     humanMove = gameBoard[0]
+    computerMove = getRandomComputerMove()
   }
   checkGameResults(humanMove, computerMove)
 }
