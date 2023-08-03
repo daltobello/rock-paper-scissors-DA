@@ -27,8 +27,6 @@ function createPlayer(name) {
 }
 
 function createGame() {
-  // call on a button click,
-  // player inputs name and token
   gameType = "Classic"
   humanPlayer = createPlayer("human")
   computerPlayer = createPlayer("computer")
