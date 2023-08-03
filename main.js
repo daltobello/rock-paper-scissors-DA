@@ -6,7 +6,7 @@ var difficultGameOption = document.querySelector(".difficult")
 
 // eventListeners
 classicGameOption.addEventListener("click", function () {
-  hideElement(classicGameOption)
+
 })
 
 // global variables
@@ -95,4 +95,10 @@ function getRandomComputerMove() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
+}
+
+
+// DOM manipulation
+function displayClassicGame() {
+  
 }
