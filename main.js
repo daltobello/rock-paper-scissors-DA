@@ -3,10 +3,11 @@
 // var computerPlayer = document.querySelector(".computer-player")
 var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
+var classicGameIcons = document.querySelector(".classic-game-icons")
 
 // eventListeners
 classicGameOption.addEventListener("click", function () {
-
+  show(classicGameIcons)
 })
 
 // global variables
