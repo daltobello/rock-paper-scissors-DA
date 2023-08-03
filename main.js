@@ -12,92 +12,87 @@ classicGameOption.addEventListener("click", function () {
 // global variables
 var gameBoard = []
 var gameType;
+var players = {}
+var humanPlayerName = "human"
+var computerPlayerName = "computer"
 
 
 // functions
 function createPlayer(name) {
-  var player = {
-    name: name,
-    turn: true,
-    wins: 0
+  if (!players[name]) {
+    players[name] = {
+      name: name,
+      turn: true,
+      wins: 0
+    }
   }
-  return player
 }
 
 function createGame() {
-  // call on a button click,
-  // player inputs name and token
   gameType = "Classic"
-  var humanPlayer = createPlayer("human")
-  var computerPlayer = createPlayer("computer")
+  createPlayer(humanPlayerName)
+  createPlayer(computerPlayerName)
   if (gameType === "Classic") {
     gameBoard = ["rock", "paper", "scissors"]
   } else {
     gameBoard = ["rock", "paper", "scissors", "something", "something"]
   }
-  takeTurn(humanPlayer, computerPlayer)
+  takeTurn(players[humanPlayerName], players[computerPlayerName])
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
-  var humanMove;
-  var computerMove;
   if (humanPlayer.turn) {
-    humanMove = gameBoard[0]
+    humanMove = gameBoard[1]
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
     computerMove = getRandomComputerMove()
   } else {
     computerMove = getRandomComputerMove()
-    humanMove = gameBoard[0]
   }
+  checkGameResults(humanMove, computerMove)
 }
 
-checkGameResults(humanMove, computerMove) {
+function checkGameResults(humanMove, computerMove) {
   if (humanMove === computerMove) {
     checkForDraw()
   } else {
     checkForWins(humanMove, computerMove)
   }
-} 
+}
 
 function checkForDraw() {
   console.log("It's a draw")
 }
 
 function checkForWins(humanMove, computerMove) {
-  
+
   var winningMoves = {
     rock: "scissors",
     paper: "rock",
     scissors: "paper"
   }
 
-  if (humanMove === computerMove) {
+  if (winningMoves[humanMove] === computerMove) {
+    players[humanPlayerName].wins++
+    resetGame()
+  } else if (winningMoves[computerMove] === humanMove) {
+    players[computerPlayerName].wins++
+    resetGame()
+  } else if (humanMove === computerMove) {
     checkForDraw()
-  } else if (winningMoves[humanMove] === computerMove) {
-    humanPlayer.wins++
-    resetGame()
-  } else if(winningMoves[computerMove] === humanMove){
-    computerPlayer.wins++
-    resetGame()
   }
 }
 
 function resetGame() {
-  humanPlayer.turn = true
-  computerPlayer.turn = false
+  players[humanPlayerName].turn = true
+  players[computerPlayerName].turn = false
 }
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
-  return  gameBoard[randGameBoardIndex]
+  return gameBoard[randGameBoardIndex]
 }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
-
-
-// if (gameBoard.length === 3) {
-//   gameType = "Classic" 
-// }
