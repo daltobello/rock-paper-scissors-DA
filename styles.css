@@ -86,3 +86,11 @@ main {
   font-weight: 400;
   text-transform: uppercase;
 }
+
+/* .game-type-options {
+  height: 200%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+} */
