@@ -24,9 +24,9 @@ function createPlayer(name) {
       name: name,
       turn: true,
       wins: 0
-      }
     }
   }
+}
 
 function createGame() {
   gameType = "Classic"
@@ -58,28 +58,28 @@ function checkGameResults(humanMove, computerMove) {
   } else {
     checkForWins(humanMove, computerMove)
   }
-} 
+}
 
 function checkForDraw() {
   console.log("It's a draw")
 }
 
 function checkForWins(humanMove, computerMove) {
-  
+
   var winningMoves = {
     rock: "scissors",
     paper: "rock",
     scissors: "paper"
   }
 
-  if (humanMove === computerMove) {
-    checkForDraw()
-  } else if (winningMoves[humanMove] === computerMove) {
+  if (winningMoves[humanMove] === computerMove) {
     players[humanPlayerName].wins++
     resetGame()
-  } else if(winningMoves[computerMove] === humanMove){
+  } else if (winningMoves[computerMove] === humanMove) {
     players[computerPlayerName].wins++
     resetGame()
+  } else if (humanMove === computerMove) {
+    checkForDraw()
   }
 }
 
@@ -90,7 +90,7 @@ function resetGame() {
 
 function getRandomComputerMove() {
   var randGameBoardIndex = getRandomIndex(gameBoard)
-  return  gameBoard[randGameBoardIndex]
+  return gameBoard[randGameBoardIndex]
 }
 
 function getRandomIndex(array) {
