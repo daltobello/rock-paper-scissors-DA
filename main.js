@@ -99,6 +99,10 @@ function getRandomIndex(array) {
 
 
 // DOM manipulation
-function displayClassicGame() {
-  
+function show(element) {
+  element.removeAttribute("hidden")
+}
+
+function hide(element) {
+  element.setAttribute("hidden", "")
 }
