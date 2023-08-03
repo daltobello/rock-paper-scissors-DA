@@ -3,10 +3,13 @@
 // var computerPlayer = document.querySelector(".computer-player")
 var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
+var classicGameIcons = document.querySelector(".classic-game-icons")
+var entireGameBoard = document.querySelector(".game-board")
 
 // eventListeners
 classicGameOption.addEventListener("click", function () {
-  hideElement(classicGameOption)
+  show(classicGameIcons)
+  hide(entireGameBoard)
 })
 
 // global variables
@@ -95,4 +98,14 @@ function getRandomComputerMove() {
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
+}
+
+
+// DOM manipulation
+function show(element) {
+  element.removeAttribute("hidden")
+}
+
+function hide(element) {
+  element.setAttribute("hidden", "")
 }
