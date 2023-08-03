@@ -39,15 +39,12 @@ function createGame() {
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
-  humanMove;
-  computerMove;
   if (humanPlayer.turn) {
-    humanMove = gameBoard[0]
+    humanMove = gameBoard[1]
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
     computerMove = getRandomComputerMove()
   } else {
-    humanMove = gameBoard[0]
     computerMove = getRandomComputerMove()
   }
   checkGameResults(humanMove, computerMove)
