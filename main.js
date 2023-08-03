@@ -4,10 +4,12 @@
 var classicGameOption = document.querySelector(".classic")
 var difficultGameOption = document.querySelector(".difficult")
 var classicGameIcons = document.querySelector(".classic-game-icons")
+var entireGameBoard = document.querySelector(".game-board")
 
 // eventListeners
 classicGameOption.addEventListener("click", function () {
   show(classicGameIcons)
+  hide(entireGameBoard)
 })
 
 // global variables
