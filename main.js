@@ -2,10 +2,14 @@
 var classicGame = document.querySelector(".classic-option")
 var gameTypeOptions = document.querySelector(".game-type")
 var classicGameIcons = document.querySelector(".classic-game-icons")
+var chooseFighter = document.querySelector(".choose-fighter")
+var chooseGame = document.querySelector(".choose-game")
 
 // eventListeners
 classicGame.addEventListener("click", function () {
 show(classicGameIcons)
+show(chooseFighter)
+hide(chooseGame)
 hide(gameTypeOptions)
 })
 

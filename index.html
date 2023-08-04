@@ -20,7 +20,8 @@
   <main class="game-board">
     <header class="title-container">
       <h1>Rock, Paper, Scissors</h1>
-      <h2>Choose your game!</h2>
+      <h2 class="choose-game">Choose your game!</h2>
+      <h2 class="choose-fighter" hidden>Choose your fighter!</h2>
     </header>
     <section class="game-type">
       <article class="classic-option">
@@ -37,20 +38,19 @@
         <p>plant > scissors & rock</p>
       </article>
     </section>
-    <form class="game-type-options">
-      <div class="classic-game-icons hidden">
+    <!-- <form class="game-type-options"> -->
+      <div class="classic-game-icons" hidden>
         <img src="assets/happy-rocks.png" alt="smiling rocks icon" class="classic-icons" id="rock-icon">
         <img src="assets/happy-paper.png" alt="smiling paper icon" class="classic-icons" id="paper-icon">
         <img src="assets/happy-scissors.png" alt="red handled scissors icon" class="classic-icons" id="scissors">
       </div>
-      <div class="difficult-game-icons hidden">
+      <div class="difficult-game-icons" hidden>
         <img src="assets/green-tractor.png" alt="green farm tractor" class="difficult-icons" id="tractor-icon">
         <img src="assets/wheat-icon.png" alt="yellow wheat icon" class="difficult-icons" id="wheat-icon">
       </div>
       <div class="result-icon-display" id="result">
       </div>
-    </form>
-    </section>
+    <!-- </form> -->
   </main>
   <aside class="score-container computer">
     <figure class="avatar computer-player">💻</figure>
