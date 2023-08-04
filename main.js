@@ -1,16 +1,28 @@
 // querySelectors
-// var humanPlayer = document.querySelector(".human-player")
-// var computerPlayer = document.querySelector(".computer-player")
-var classicGameOption = document.querySelector(".classic")
-var difficultGameOption = document.querySelector(".difficult")
+var classicGame = document.querySelector(".classic-option")
+var difficultGame = document.querySelector(".difficult-option")
+// var gameTypeOptions = document.querySelector(".game-type")
 var classicGameIcons = document.querySelector(".classic-game-icons")
-var entireGameBoard = document.querySelector(".game-board")
+var chooseFighterMsg = document.querySelector(".choose-fighter")
+var chooseGameMsg = document.querySelector(".choose-game")
+var resultsDisplay = document.querySelector(".results-display")
+// icons
+var rockIcon = document.querySelector(".rock-icon")
+var paperIcon = document.querySelector(".paper-icon")
+var scissorsIcon = document.querySelector(".scissors-icon")
 
 // eventListeners
-classicGameOption.addEventListener("click", function () {
+classicGame.addEventListener("click", function () {
+  // createGame()
+  show(chooseFighterMsg)
+  hide(chooseGameMsg)
+  hide(difficultGame)
+  console.log("hello")
+  hide(classicGame)
   show(classicGameIcons)
-  hide(entireGameBoard)
+ 
 })
+// make another eventListener for difficultGame and fire createGame() again?
 
 // global variables
 var gameBoard = []
@@ -32,20 +44,24 @@ function createPlayer(name) {
 }
 
 function createGame() {
-  gameType = "Classic"
+  gameType = "Classic" // hard coded for now. connect to DOM.
   createPlayer(humanPlayerName)
   createPlayer(computerPlayerName)
   if (gameType === "Classic") {
     gameBoard = ["rock", "paper", "scissors"]
   } else {
-    gameBoard = ["rock", "paper", "scissors", "something", "something"]
+    gameBoard = ["rock", "paper", "scissors", "tractor", "wheat"]
   }
+  // show(classicGameIcons)
+  // show(chooseFighterMsg)
+  // hide(chooseGameMsg)
+  // hide(gameTypeOptions)
   takeTurn(players[humanPlayerName], players[computerPlayerName])
 }
 
 function takeTurn(humanPlayer, computerPlayer) {
   if (humanPlayer.turn) {
-    humanMove = gameBoard[1]
+    humanMove = gameBoard[1] // hard coded for now. connect to DOM
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
     computerMove = getRandomComputerMove()
@@ -101,7 +117,7 @@ function getRandomIndex(array) {
 }
 
 
-// DOM manipulation
+// display functions
 function show(element) {
   element.removeAttribute("hidden")
 }
@@ -109,3 +125,7 @@ function show(element) {
 function hide(element) {
   element.setAttribute("hidden", "")
 }
+
+// function displayGameResult() {
+//   chooseFighterMsg.innerText = ""
+// }

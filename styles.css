@@ -1,11 +1,22 @@
+/* * { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
+
 * {
   font-family: 'Inter', sans-serif;
   color: white;
   margin: 0;
 }
 
-.hidden {
-  display: none;
+body {
+  display: flex;
+  height: 100vh;
 }
 
 h1 {
@@ -21,11 +32,11 @@ h2 {
 }
 
 main {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-evenly;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .avatar {
@@ -34,6 +45,8 @@ main {
 }
 
 .title-container {
+  height: 20vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,33 +77,50 @@ main {
   margin-top: 6%;
 }
 
-.classic,
-.difficult {
-  height:24%;
-  width: 26%;
-  background-color: #382633;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+.game-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.difficult {
-  height:28%;
-  width: 26%;
-  margin-top: 3%;
-}
-
-.complexity {
+h5 {
   font-size: 1.8em;
   font-weight: 400;
   text-transform: uppercase;
 }
 
-/* .game-type-options {
-  height: 200%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+/* .classic-option {
+  margin-bottom: 5%;
+  margin-top: 3%;
 } */
+
+.classic-option, 
+.difficult-option {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  width: 24%;
+  background-color: #382633;
+  border-radius: 6%;
+  /* padding-top: 6%;
+  padding-bottom: 6%; */
+}
+
+/* .game-type-options {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+} */
+
+.classic-game-icons {
+  height: 20%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
