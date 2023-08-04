@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+body {
+  display: flex;
+  height: 100vh;
+}
+
 .hidden {
   display: none;
 }
@@ -21,11 +26,11 @@ h2 {
 }
 
 main {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .avatar {
@@ -64,33 +69,49 @@ main {
   margin-top: 6%;
 }
 
-.classic,
+.classic, 
 .difficult {
-  height:24%;
+  height: 24%;
   width: 26%;
   background-color: #382633;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
+  align-content: center; */
 }
 
 .difficult {
-  height:28%;
+  height: 28%;
   width: 26%;
   margin-top: 3%;
 }
 
-.complexity {
+h5 {
   font-size: 1.8em;
   font-weight: 400;
   text-transform: uppercase;
 }
 
-/* .game-type-options {
-  height: 200%;
+.game-type-options {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+/* .classic-game-icons {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 } */
+
+.game-type {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
