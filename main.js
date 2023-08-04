@@ -129,3 +129,21 @@ function hide(element) {
 // function displayGameResult() {
 //   chooseFighterMsg.innerText = ""
 // }
+
+
+// classic-game-icons add event listener. then match ids. if event.target.id === icon id.
+
+
+// show random icon:
+
+// generate icon. create element and append.child 
+
+// create element. append child. add to blank section. delete from 
+// based on what the computer chose. add new class. then remove html element so it's not redundant
+// on event listener, del element
+
+// create el.
+
+// function removeNewIcon() {
+//   resultsIcons.removeChild(resultsIcons.firstElementChild);
+// }

@@ -48,8 +48,11 @@ main {
   height: 20vh;
   width: 100vw;
   display: flex;
+  /* position: fixed; */
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+
 }
 
 .game-board {
@@ -91,10 +94,10 @@ h5 {
   text-transform: uppercase;
 }
 
-/* .classic-option {
+.classic-option {
   margin-bottom: 5%;
   margin-top: 3%;
-} */
+}
 
 .classic-option, 
 .difficult-option {
@@ -106,21 +109,27 @@ h5 {
   width: 24%;
   background-color: #382633;
   border-radius: 6%;
-  /* padding-top: 6%;
-  padding-bottom: 6%; */
+  padding-top: 6%;
+  padding-bottom: 6%;
 }
 
-/* .game-type-options {
+.game-type-options {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-} */
+}
 
 .classic-game-icons {
-  height: 20%;
+  visibility: visible;
+  height: 25%;
   width: 100vw;
   display: flex;
   justify-content: center;
+  margin-top: 10%;
+}
+
+[hidden] {
+  display: none !important;
 }
