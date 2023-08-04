@@ -1,15 +1,12 @@
 // querySelectors
-// var humanPlayer = document.querySelector(".human-player")
-// var computerPlayer = document.querySelector(".computer-player")
-var classicGameOption = document.querySelector(".classic")
-var difficultGameOption = document.querySelector(".difficult")
+var classicGame = document.querySelector(".classic-option")
+var gameTypeOptions = document.querySelector(".game-type")
 var classicGameIcons = document.querySelector(".classic-game-icons")
-var entireGameBoard = document.querySelector(".game-board")
 
 // eventListeners
-classicGameOption.addEventListener("click", function () {
-  show(classicGameIcons)
-  hide(entireGameBoard)
+classicGame.addEventListener("click", function () {
+show(classicGameIcons)
+hide(gameTypeOptions)
 })
 
 // global variables
