@@ -29,13 +29,11 @@ difficultGame.addEventListener("click", function () {
 })
 
 classicGameIcons.addEventListener("click", function(event) {
-  console.log(event.target.id)
-  if (event.target.id === rockIcon) { // or players[humanPlayerName].move
-// need to store player move in player object?
-// if the ids match up, assign to humanMove
-// write function to fire
+  if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon) { 
+    takeTurn(players[humanPlayerName], players[computerPlayerName], clickedIcon)
   } 
 })
+
 
 // global variables
 var gameBoard = []
@@ -50,7 +48,9 @@ function createPlayer(name) {
     players[name] = {
       name: name,
       turn: true,
-      wins: 0
+      wins: 0,
+      humanMove: null,
+      computerMove: null
     }
   }
 }
@@ -63,19 +63,15 @@ function createGame() {
   } else {
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
   }
-  takeTurn(players[humanPlayerName], players[computerPlayerName])
 }
 
-function takeTurn(humanPlayer, computerPlayer) {
+function takeTurn(humanPlayer, computerPlayer, humanMove) {
   if (humanPlayer.turn) {
-    humanMove = gameBoard[1] // hard coded for now. connect to DOM
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
     computerMove = getRandomComputerMove()
-  } else {
-    computerMove = getRandomComputerMove()
+    checkGameResults(humanMove, computerMove)
   }
-  checkGameResults(humanMove, computerMove)
 }
 
 function checkGameResults(humanMove, computerMove) {
