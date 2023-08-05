@@ -81,11 +81,16 @@ main {
 }
 
 .game-type {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.game-type :hover {
+  background-color: #79536E;
+  cursor: pointer;
 }
 
 h5 {
@@ -99,7 +104,7 @@ h5 {
   margin-top: 3%;
 }
 
-.classic-option, 
+.classic-option,
 .difficult-option {
   display: flex;
   flex-wrap: wrap;
@@ -121,13 +126,20 @@ h5 {
   flex-direction: column;
 }
 
-.classic-game-icons {
+.classic-game-icons,
+.difficult-game-icons {
   visibility: visible;
-  height: 25%;
+  height: 20%;
   width: 100vw;
   display: flex;
   justify-content: center;
   margin-top: 10%;
+}
+
+.classic-icons,
+.difficult-icons {
+  margin-right: 1.5%;
+  margin-right: 1.5%;
 }
 
 [hidden] {

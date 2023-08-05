@@ -3,6 +3,7 @@ var classicGame = document.querySelector(".classic-option")
 var difficultGame = document.querySelector(".difficult-option")
 // var gameTypeOptions = document.querySelector(".game-type")
 var classicGameIcons = document.querySelector(".classic-game-icons")
+var difficultGameIcons = document.querySelector(".difficult-game-icons")
 var chooseFighterMsg = document.querySelector(".choose-fighter")
 var chooseGameMsg = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
@@ -20,8 +21,16 @@ classicGame.addEventListener("click", function () {
   console.log("hello")
   hide(classicGame)
   show(classicGameIcons)
- 
 })
+
+difficultGame.addEventListener("click", function() {
+  show(chooseFighterMsg)
+  hide(chooseGameMsg)
+  hide(classicGame)
+  hide(difficultGame)
+  show(difficultGameIcons)
+})
+
 // make another eventListener for difficultGame and fire createGame() again?
 
 // global variables
