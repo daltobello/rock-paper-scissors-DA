@@ -1,11 +1,10 @@
 // querySelectors
 var classicGame = document.querySelector(".classic-option")
 var difficultGame = document.querySelector(".difficult-option")
-// var gameTypeOptions = document.querySelector(".game-type")
 var classicGameIcons = document.querySelector(".classic-icons-container")
 var difficultGameIcons = document.querySelector(".difficult-icons-container")
-var chooseFighterMsg = document.querySelector(".choose-fighter")
-var chooseGameMsg = document.querySelector(".choose-game")
+var altSubHeading = document.querySelector(".alt-sub-heading")
+var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
 // icons
 var rockIcon = document.querySelector(".rock-icon")
@@ -15,22 +14,20 @@ var scissorsIcon = document.querySelector(".scissors-icon")
 // eventListeners
 classicGame.addEventListener("click", function () {
   // createGame()
-  show(chooseFighterMsg)
-  hide(chooseGameMsg)
+  show(altSubHeading)
+  hide(chooseGameHeading)
   hide(difficultGame)
-  console.log("hello")
   hide(classicGame)
   show(classicGameIcons)
 })
 
 difficultGame.addEventListener("click", function() {
-  show(chooseFighterMsg)
-  hide(chooseGameMsg)
+  show(altSubHeading)
+  hide(chooseGameHeading)
   hide(classicGame)
   hide(difficultGame)
   show(difficultGameIcons)
 })
-
 // make another eventListener for difficultGame and fire createGame() again?
 
 // global variables
@@ -39,7 +36,6 @@ var gameType;
 var players = {}
 var humanPlayerName = "human"
 var computerPlayerName = "computer"
-
 
 // functions
 function createPlayer(name) {
@@ -125,7 +121,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-
 // display functions
 function show(element) {
   element.removeAttribute("hidden")
@@ -139,12 +134,9 @@ function hide(element) {
 //   chooseFighterMsg.innerText = ""
 // }
 
-
 // classic-game-icons add event listener. then match ids. if event.target.id === icon id.
 
-
 // show random icon:
-
 // generate icon. create element and append.child 
 
 // create element. append child. add to blank section. delete from 
