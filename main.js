@@ -99,10 +99,10 @@ function checkForWins(humanMove, computerMove) {
     scissors: paperIcon
   }
 
-  if (winningMoves[humanMove] === computerMove) {
+  if (winningMoves[humanMove] === computerMove.id) {
     players[humanPlayerName].wins++
     resetGame()
-  } else if (winningMoves[computerMove] === humanMove) {
+  } else if (winningMoves[computerMove] === humanMove.id) {
     players[computerPlayerName].wins++
     resetGame()
   } else if (humanMove === computerMove) {
