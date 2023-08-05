@@ -6,10 +6,12 @@ var difficultGameIcons = document.querySelector(".difficult-icons-container")
 var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
+var gameBoardContainer = document.querySelector(".game-board")
 // icons
-var rockIcon = document.querySelector(".rock-icon")
-var paperIcon = document.querySelector(".paper-icon")
-var scissorsIcon = document.querySelector(".scissors-icon")
+var rockIcon = document.querySelector("#rock-icon")
+var paperIcon = document.querySelector("#paper-icon")
+var scissorsIcon = document.querySelector("#scissors-icon")
+
 
 // eventListeners
 classicGame.addEventListener("click", function () {
@@ -24,7 +26,14 @@ difficultGame.addEventListener("click", function () {
   createGame()
 })
 
-// make another eventListener for difficultGame and fire createGame() again?
+classicGameIcons.addEventListener("click", function(event) {
+  console.log(event.target.id)
+  if (event.target.id === rockIcon) { // or players[humanPlayerName].move
+// need to store player move in player object?
+// if the ids match up, assign to humanMove
+// write function to fire
+  } 
+})
 
 // global variables
 var gameBoard = []
@@ -52,10 +61,6 @@ function createGame() {
   } else {
     gameBoard = ["rock", "paper", "scissors", "tractor", "wheat"]
   }
-  // show(classicGameIcons)
-  // show(chooseFighterMsg)
-  // hide(chooseGameMsg)
-  // hide(gameTypeOptions)
   takeTurn(players[humanPlayerName], players[computerPlayerName])
 }
 
