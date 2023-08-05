@@ -69,7 +69,9 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
   if (humanPlayer.turn) {
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
-    computerMove = getRandomComputerMove()
+    humanPlayer.humanMove = humanMove
+    var computerMove = getRandomComputerMove()
+    computerPlayer.computerMove = computerMove
     checkGameResults(humanMove, computerMove)
   }
 }
