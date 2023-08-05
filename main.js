@@ -11,6 +11,8 @@ var gameBoardContainer = document.querySelector(".game-board")
 var rockIcon = document.querySelector("#rock-icon")
 var paperIcon = document.querySelector("#paper-icon")
 var scissorsIcon = document.querySelector("#scissors-icon")
+var tractorIcon = document.querySelector("#tractor-icon")
+var wheatIcon = document.querySelector("#wheat-icon")
 
 
 // eventListeners
@@ -57,9 +59,9 @@ function createGame() {
   createPlayer(humanPlayerName)
   createPlayer(computerPlayerName)
   if (gameType === "Classic") {
-    gameBoard = ["rock", "paper", "scissors"]
+    gameBoard = [rockIcon, paperIcon, scissorsIcon]
   } else {
-    gameBoard = ["rock", "paper", "scissors", "tractor", "wheat"]
+    gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
   }
   takeTurn(players[humanPlayerName], players[computerPlayerName])
 }
