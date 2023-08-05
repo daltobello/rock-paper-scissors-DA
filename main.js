@@ -13,21 +13,17 @@ var scissorsIcon = document.querySelector(".scissors-icon")
 
 // eventListeners
 classicGame.addEventListener("click", function () {
-  // createGame()
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(difficultGame)
-  hide(classicGame)
-  show(classicGameIcons)
+  gameType = "Classic"
+  displayClassicGame()
+  createGame()
 })
 
-difficultGame.addEventListener("click", function() {
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(classicGame)
-  hide(difficultGame)
-  show(difficultGameIcons)
+difficultGame.addEventListener("click", function () {
+  gameType = "Difficult"
+  displayDifficultGame()
+  createGame()
 })
+
 // make another eventListener for difficultGame and fire createGame() again?
 
 // global variables
@@ -49,7 +45,6 @@ function createPlayer(name) {
 }
 
 function createGame() {
-  gameType = "Classic" // hard coded for now. connect to DOM.
   createPlayer(humanPlayerName)
   createPlayer(computerPlayerName)
   if (gameType === "Classic") {
@@ -121,13 +116,29 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-// display functions
+// DOM manipulation functions
 function show(element) {
   element.removeAttribute("hidden")
 }
 
 function hide(element) {
   element.setAttribute("hidden", "")
+}
+
+function displayClassicGame() {
+  show(altSubHeading)
+  hide(chooseGameHeading)
+  hide(difficultGame)
+  hide(classicGame)
+  show(classicGameIcons)
+}
+
+function displayDifficultGame() {
+  show(altSubHeading)
+  hide(chooseGameHeading)
+  hide(classicGame)
+  hide(difficultGame)
+  show(difficultGameIcons)
 }
 
 // function displayGameResult() {
@@ -148,3 +159,5 @@ function hide(element) {
 // function removeNewIcon() {
 //   resultsIcons.removeChild(resultsIcons.firstElementChild);
 // }
+
+
