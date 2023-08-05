@@ -30,6 +30,7 @@ difficultGame.addEventListener("click", function () {
 
 classicGameIcons.addEventListener("click", function(event) {
   if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon) { 
+    clickedIcon = event.target.id
     takeTurn(players[humanPlayerName], players[computerPlayerName], clickedIcon)
   } 
 })
@@ -66,21 +67,24 @@ function createGame() {
 }
 
 function takeTurn(humanPlayer, computerPlayer, humanMove) {
+  var computerMove;
   if (humanPlayer.turn) {
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
     humanPlayer.humanMove = humanMove
-    var computerMove = getRandomComputerMove()
+    computerMove = getRandomComputerMove()
     computerPlayer.computerMove = computerMove
     checkGameResults(humanMove, computerMove)
   }
 }
 
-function checkGameResults(humanMove, computerMove) {
-  if (humanMove === computerMove) {
+function checkGameResults(humanPlayerMove, computerPlayerMove) {
+ var humanPlayerMove = players[humanPlayerName].humanMove
+ var computerPlayerMove = players[computerPlayerName].computerMove
+  if (humanPlayerMove === computerPlayerMove) {
     checkForDraw()
   } else {
-    checkForWins(humanMove, computerMove)
+    checkForWins(humanPlayerMove, computerPlayerMove)
   }
 }
 
@@ -89,11 +93,10 @@ function checkForDraw() {
 }
 
 function checkForWins(humanMove, computerMove) {
-
   var winningMoves = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
+    rock: scissorsIcon,
+    paper: rockIcon,
+    scissors: paperIcon
   }
 
   if (winningMoves[humanMove] === computerMove) {
