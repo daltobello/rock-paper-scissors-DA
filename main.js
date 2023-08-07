@@ -22,15 +22,17 @@ var wheatIcon = document.querySelector("#yellow-wheat")
 // eventListeners
 
 classicGame.addEventListener("click", function () {
-  gameType = "Classic"
-  displayClassicGame()
-  createGame()
+  startGame("classic")
+  // gameType = "Classic"
+  // displayClassicGame()
+  // createGame()
 })
 
 difficultGame.addEventListener("click", function () {
-  gameType = "Difficult"
-  displayDifficultGame()
-  createGame()
+  startGame("difficult")
+  // gameType = "Difficult"
+  // displayDifficultGame()
+  // createGame()
 })
 
 classicGameIcons.addEventListener("click", function(event) {
@@ -60,10 +62,17 @@ function createPlayer(name) {
   }
 }
 
+function startGame(type) {
+  gameType = type
+  displayGame()
+  createGame()
+}
+
+
 function createGame() {
   createPlayer(humanPlayerName)
   createPlayer(computerPlayerName)
-  if (gameType === "Classic") {
+  if (gameType === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
   } else {
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
