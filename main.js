@@ -80,8 +80,12 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
   }
 }
 
-function displayPlayerMoves(humanMove, computerMove) {
-  gameResults.innerHTML = humanMove
+function displayGameResults() {
+  show(altSubHeading)
+  hide(classicGameIcons)
+  // display icon results
+  // display wins for both players
+  // add a timeout function and call it here
 }
 // currently working here --->
 
