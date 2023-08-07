@@ -9,14 +9,15 @@ var resultsDisplay = document.querySelector(".results-display")
 var gameBoardContainer = document.querySelector(".game-board")
 // var gameResults = document.querySelector(".game-results")
 // icons
-var rockIcon = document.querySelector("#rock-icon")
-var paperIcon = document.querySelector("#paper-icon")
-var scissorsIcon = document.querySelector("#scissors-icon")
+var rockIcon = document.querySelector("#happy-rocks-icon")
+var paperIcon = document.querySelector("#happy-paper-icon")
+var scissorsIcon = document.querySelector("#happy-scissors-icon")
 var tractorIcon = document.querySelector("#tractor-icon")
 var wheatIcon = document.querySelector("#wheat-icon")
 
 
 // eventListeners
+
 classicGame.addEventListener("click", function () {
   gameType = "Classic"
   displayClassicGame()
@@ -153,28 +154,30 @@ function displayDifficultGame() {
 function displayGameResults() {
   show(altSubHeading)
   hide(classicGameIcons)
-  displayIconResults(players[humanPlayerName].humanMove, players[computerPlayerName.computerMove])
+  displayIconResults(players[humanPlayerName].move, players[computerPlayerName].move)
   // display icon results
   // display wins for both players
   // add a timeout function and call it here
 }
 
 function displayIconResults(winner, loser) {
-  console.log("move")
-  // var winnerName = winner.substring(0, winner.indexOf('-icon'));
-  // var loserName = loser.substring(0, loser.indexOf('-icon'));
+  console.log("Winner:", winner)
+  console.log("Loser:", loser.id)
 
-  // var winnerImg = document.createElement("img")
-  // var loserImg = document.createElement("img")
-  // winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
-  // winnerImg.setAttribute("id", winnerName)
+  var winnerName = winner.substring(0, winner.indexOf('-icon'))
+  var loserName = loser.id.substring(0, loser.id.indexOf('-icon'))
 
-  // loserImg.setAttribute("src", `./assets/${loserName}.png`)
-  // loserImg.setAttribute("id", loserName)
+  var winnerImg = document.createElement("img")
+  var loserImg = document.createElement("img")
+  winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
+  winnerImg.setAttribute("id", winnerName)
 
-  // var gameResults = document.getElementById("result")
-  // gameResults.appendChild(winnerImg)
-  // gameResults.appendChild(loserImg)
+  loserImg.setAttribute("src", `./assets/${loserName}.png`)
+  loserImg.setAttribute("id", loserName)
+
+  var gameResults = document.getElementById("result")
+  gameResults.appendChild(winnerImg)
+  gameResults.appendChild(loserImg)
 }
 
 // create element. append child. add to blank section. delete from 
