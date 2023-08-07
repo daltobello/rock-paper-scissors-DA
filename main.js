@@ -7,7 +7,7 @@ var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
 var gameBoardContainer = document.querySelector(".game-board")
-var gameResults = document.querySelector(".game-results")
+// var gameResults = document.querySelector(".game-results")
 // icons
 var rockIcon = document.querySelector("#rock-icon")
 var paperIcon = document.querySelector("#paper-icon")
@@ -76,19 +76,8 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
     computerMove = getRandomComputerMove()
     computerPlayer.computerMove = computerMove
     checkGameResults(humanMove, computerMove)
-    displayPlayerMoves(humanMove, computerMove)
   }
 }
-
-function displayGameResults() {
-  show(altSubHeading)
-  hide(classicGameIcons)
-  // display icon results
-  // display wins for both players
-  // add a timeout function and call it here
-}
-// currently working here --->
-
 
 function checkGameResults(humanPlayerMove, computerPlayerMove) {
  var humanPlayerMove = players[humanPlayerName].humanMove
@@ -120,6 +109,7 @@ function checkForWins(humanMove, computerMove) {
   } else if (humanMove === computerMove) {
     checkForDraw()
   }
+  displayGameResults()
 }
 
 function resetGame() {
@@ -161,7 +151,36 @@ function displayDifficultGame() {
   show(difficultGameIcons)
 }
 
+function displayGameResults() {
+  show(altSubHeading)
+  hide(classicGameIcons)
+  displayIconResults(players[humanPlayerName].humanMove, players[computerPlayerName.computerMove])
+  // display icon results
+  // display wins for both players
+  // add a timeout function and call it here
+}
 
+function displayIconResults(winner, loser) {
+  console.log("move")
+  var winnerName = winner.substring(0, winner.indexOf('-icon'));
+  var loserName = loser.substring(0, loser.indexOf('-icon'));
+
+  var winnerImg = document.createElement("img")
+  var loserImg = document.createElement("img")
+  winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
+  winnerImg.setAttribute("id", winnerName)
+
+  loserImg.setAttribute("src", `./assets/${loserName}.png`)
+  loserImg.setAttribute("id", loserName)
+
+  var gameResults = document.getElementById("result")
+  gameResults.appendChild(winnerImg)
+  gameResults.appendChild(loserImg)
+}
+
+// create element. append child. add to blank section. delete from 
+// based on what the computer chose. add new class. then remove html element so it's not redundant
+// on event listener, del element
 
 // function displayGameResult() {
 //   chooseFighterMsg.innerText = ""
@@ -172,9 +191,7 @@ function displayDifficultGame() {
 // show random icon:
 // generate icon. create element and append.child 
 
-// create element. append child. add to blank section. delete from 
-// based on what the computer chose. add new class. then remove html element so it's not redundant
-// on event listener, del element
+
 
 // create el.
 
