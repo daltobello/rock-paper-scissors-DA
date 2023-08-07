@@ -110,9 +110,10 @@ function displayDraw() {
 
 function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
-    rock: scissorsIcon,
-    paper: rockIcon,
-    scissors: paperIcon
+    rock: scissorsIcon || wheatIcon,
+    paper: rockIcon || tractorIcon,
+    scissors: paperIcon || wheatIcon,
+    wheatIcon: scissorsIcon || rockIcon
   }
 
   if (winningMoves[humanMove] === computerMove) {
@@ -188,4 +189,5 @@ function displayWins() {
 
 
 
-
+// function that takes you home
+// setTimeout function when go home
