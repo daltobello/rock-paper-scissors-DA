@@ -51,8 +51,7 @@ function createPlayer(name) {
       name: name,
       turn: true,
       wins: 0,
-      humanMove: null,
-      computerMove: null
+      move: null,
     }
   }
 }
@@ -72,16 +71,16 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
   if (humanPlayer.turn) {
     humanPlayer.turn = !humanPlayer.turn
     computerPlayer.turn = true
-    humanPlayer.humanMove = humanMove
+    humanPlayer.move = humanMove
     computerMove = getRandomComputerMove()
-    computerPlayer.computerMove = computerMove
+    computerPlayer.move = computerMove
     checkGameResults(humanMove, computerMove)
   }
 }
 
 function checkGameResults(humanPlayerMove, computerPlayerMove) {
- var humanPlayerMove = players[humanPlayerName].humanMove
- var computerPlayerMove = players[computerPlayerName].computerMove
+ var humanPlayerMove = players[humanPlayerName].move
+ var computerPlayerMove = players[computerPlayerName].move
   if (humanPlayerMove === computerPlayerMove) {
     checkForDraw()
   } else {
@@ -162,20 +161,20 @@ function displayGameResults() {
 
 function displayIconResults(winner, loser) {
   console.log("move")
-  var winnerName = winner.substring(0, winner.indexOf('-icon'));
-  var loserName = loser.substring(0, loser.indexOf('-icon'));
+  // var winnerName = winner.substring(0, winner.indexOf('-icon'));
+  // var loserName = loser.substring(0, loser.indexOf('-icon'));
 
-  var winnerImg = document.createElement("img")
-  var loserImg = document.createElement("img")
-  winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
-  winnerImg.setAttribute("id", winnerName)
+  // var winnerImg = document.createElement("img")
+  // var loserImg = document.createElement("img")
+  // winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
+  // winnerImg.setAttribute("id", winnerName)
 
-  loserImg.setAttribute("src", `./assets/${loserName}.png`)
-  loserImg.setAttribute("id", loserName)
+  // loserImg.setAttribute("src", `./assets/${loserName}.png`)
+  // loserImg.setAttribute("id", loserName)
 
-  var gameResults = document.getElementById("result")
-  gameResults.appendChild(winnerImg)
-  gameResults.appendChild(loserImg)
+  // var gameResults = document.getElementById("result")
+  // gameResults.appendChild(winnerImg)
+  // gameResults.appendChild(loserImg)
 }
 
 // create element. append child. add to blank section. delete from 
