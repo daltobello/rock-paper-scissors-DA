@@ -161,6 +161,7 @@ function displayGameResults() {
   show(altSubHeading)
   hide(classicGameIcons)
   displayIconResults(players[humanPlayerName].move, players[computerPlayerName].move)
+  displayWins()
   // display wins for both players
   // add a timeout function and call it here
 }
@@ -180,6 +181,11 @@ function createIconImg(iconId) {
   iconImg.setAttribute("src", `./assets/${iconId}.png`)
   iconImg.setAttribute("id", iconId)
   return iconImg
+}
+
+function displayWins() {
+  humanWins.innerHTML = `Wins: ${players[humanPlayerName].wins}`
+  computerWins.innerHTML = `Wins: ${players[computerPlayerName].wins}`
 }
 
 // create element. append child. add to blank section. delete from 
