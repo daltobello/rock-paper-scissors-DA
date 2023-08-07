@@ -7,6 +7,7 @@ var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
 var gameBoardContainer = document.querySelector(".game-board")
+var gameResults = document.querySelector(".game-results")
 // icons
 var rockIcon = document.querySelector("#rock-icon")
 var paperIcon = document.querySelector("#paper-icon")
@@ -75,8 +76,15 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
     computerMove = getRandomComputerMove()
     computerPlayer.computerMove = computerMove
     checkGameResults(humanMove, computerMove)
+    displayPlayerMoves(humanMove, computerMove)
   }
 }
+
+function displayPlayerMoves(humanMove, computerMove) {
+  gameResults.innerHTML = humanMove
+}
+// currently working here --->
+
 
 function checkGameResults(humanPlayerMove, computerPlayerMove) {
  var humanPlayerMove = players[humanPlayerName].humanMove
@@ -148,6 +156,8 @@ function displayDifficultGame() {
   hide(difficultGame)
   show(difficultGameIcons)
 }
+
+
 
 // function displayGameResult() {
 //   chooseFighterMsg.innerText = ""
