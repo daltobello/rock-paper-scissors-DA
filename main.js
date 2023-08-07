@@ -110,10 +110,10 @@ function displayDraw() {
 
 function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
-    rock: scissorsIcon || wheatIcon,
-    paper: rockIcon || tractorIcon,
-    scissors: paperIcon || wheatIcon,
-    wheatIcon: scissorsIcon || rockIcon
+    rock: scissorsIcon || scissorsIcon && wheatIcon,
+    paper: rockIcon || rockIcon && tractorIcon,
+    scissors: paperIcon || paperIcon && wheatIcon,
+    wheatIcon: scissorsIcon && rockIcon
   }
 
   if (winningMoves[humanMove] === computerMove) {
