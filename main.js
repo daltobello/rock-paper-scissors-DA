@@ -41,20 +41,9 @@ var human = "human"
 var computer = "computer"
 
 // functions
-function createPlayer(name) {
-  if (!players[name]) {
-    players[name] = {
-      name: name,
-      turn: true,
-      wins: 0,
-      move: null,
-    }
-  }
-}
-
 function startGame(type) {
   gameType = type
-  displayGame()
+  displayGame(type)
   createGame()
 }
 
@@ -69,7 +58,18 @@ function displayGame(type) {
   } else {
     show(difficultGameIcons)
   }
-  show(altSubHeading)
+    show(altSubHeading)
+}
+
+function createPlayer(name) {
+  if (!players[name]) {
+    players[name] = {
+      name: name,
+      turn: true,
+      wins: 0,
+      move: null,
+    }
+  }
 }
 
 function createGame() {
@@ -157,8 +157,6 @@ function displayGameResults() {
 }
 
 function displayIconResults(winner, loser) {
-  // console.log("Winner:", winner)
-  // console.log("Loser:", loser.id)
   var winnerIcon = createIconImg(winner)
   var loserIcon = createIconImg(loser.id)
   var gameResults = document.getElementById("result")
@@ -177,28 +175,10 @@ function createIconImg(iconId) {
   return iconImg
 }
 
-
 function displayWins() {
   humanWins.innerHTML = `Wins: ${players[human].wins}`
   computerWins.innerHTML = `Wins: ${players[computer].wins}`
 }
-
-// create element. append child. add to blank section. delete from 
-// based on what the computer chose. add new class. then remove html element so it's not redundant
-// on event listener, del element
-
-// function displayGameResult() {
-//   chooseFighterMsg.innerText = ""
-// }
-
-// classic-game-icons add event listener. then match ids. if event.target.id === icon id.
-
-// show random icon:
-// generate icon. create element and append.child 
-
-
-
-// create el.
 
 
 
