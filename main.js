@@ -7,6 +7,8 @@ var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
 var gameBoardContainer = document.querySelector(".game-board")
+var humanWins = document.querySelector(".human-wins")
+var computerWins = document.querySelector(".computer-wins")
 // var gameResults = document.querySelector(".game-results")
 // icons
 var rockIcon = document.querySelector("#happy-rocks")
@@ -14,6 +16,7 @@ var paperIcon = document.querySelector("#happy-paper")
 var scissorsIcon = document.querySelector("#happy-scissors")
 var tractorIcon = document.querySelector("#green-tractor")
 var wheatIcon = document.querySelector("#yellow-wheat")
+
 
 
 // eventListeners
@@ -90,6 +93,8 @@ function checkGameResults(humanPlayerMove, computerPlayerMove) {
 }
 
 function checkForDraw() {
+  hide(classicGameIcons)
+  displayGameResults()
   altSubHeading.innerHTML = ""
   altSubHeading.innerHTML += "😭It's a draw!😭"
 }
