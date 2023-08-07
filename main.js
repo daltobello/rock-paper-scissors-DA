@@ -55,7 +55,7 @@ function createPlayer(name) {
       name: name,
       turn: true,
       wins: 0,
-      move: null,
+      move: null,``
     }
   }
 }
@@ -86,6 +86,7 @@ function checkGameResults(humanPlayerMove, computerPlayerMove) {
  var humanPlayerMove = players[humanPlayerName].move
  var computerPlayerMove = players[computerPlayerName].move.id
   if (humanPlayerMove === computerPlayerMove) {
+    // setTimeout(displayDraw(), 1000)
     displayDraw()
   } else {
     checkForWins(humanPlayerMove, computerPlayerMove)
@@ -108,6 +109,7 @@ function checkForWins(humanMove, computerMove) {
   } else if (humanMove === computerMove) {
     checkForDraw()
   }
+
   displayGameResults()
 }
 
@@ -155,7 +157,6 @@ function displayGameResults() {
   hide(classicGameIcons)
   displayIconResults(players[humanPlayerName].move, players[computerPlayerName].move)
   displayWins()
-  // display wins for both players
   // add a timeout function and call it here
 }
 
@@ -167,6 +168,10 @@ function displayIconResults(winner, loser) {
   var gameResults = document.getElementById("result")
   gameResults.appendChild(winnerIcon)
   gameResults.appendChild(loserIcon)
+}
+
+function removeNewIcon() {
+  gameResults.removeChild(gameResults.firstElementChild);
 }
 
 function createIconImg(iconId) {
@@ -205,8 +210,6 @@ function displayWins() {
 
 // create el.
 
-// function removeNewIcon() {
-//   resultsIcons.removeChild(resultsIcons.firstElementChild);
-// }
+
 
 
