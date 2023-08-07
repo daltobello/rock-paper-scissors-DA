@@ -86,17 +86,10 @@ function checkGameResults(humanPlayerMove, computerPlayerMove) {
  var humanPlayerMove = players[humanPlayerName].move
  var computerPlayerMove = players[computerPlayerName].move.id
   if (humanPlayerMove === computerPlayerMove) {
-    checkForDraw()
+    displayDraw()
   } else {
     checkForWins(humanPlayerMove, computerPlayerMove)
   }
-}
-
-function checkForDraw() {
-  hide(classicGameIcons)
-  displayGameResults()
-  altSubHeading.innerHTML = ""
-  altSubHeading.innerHTML += "😭It's a draw!😭"
 }
 
 function checkForWins(humanMove, computerMove) {
@@ -181,6 +174,13 @@ function createIconImg(iconId) {
   iconImg.setAttribute("src", `./assets/${iconId}.png`)
   iconImg.setAttribute("id", iconId)
   return iconImg
+}
+
+function displayDraw() {
+  hide(classicGameIcons)
+  displayGameResults()
+  altSubHeading.innerHTML = ""
+  altSubHeading.innerHTML += "😭It's a draw!😭"
 }
 
 function displayWins() {
