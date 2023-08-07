@@ -81,7 +81,7 @@ function takeTurn(humanPlayer, computerPlayer, humanMove) {
 
 function checkGameResults(humanPlayerMove, computerPlayerMove) {
  var humanPlayerMove = players[humanPlayerName].move
- var computerPlayerMove = players[computerPlayerName].move
+ var computerPlayerMove = players[computerPlayerName].move.id
   if (humanPlayerMove === computerPlayerMove) {
     checkForDraw()
   } else {
@@ -90,7 +90,8 @@ function checkGameResults(humanPlayerMove, computerPlayerMove) {
 }
 
 function checkForDraw() {
-  console.log("It's a draw")
+  altSubHeading.innerHTML = ""
+  altSubHeading.innerHTML += "😭It's a draw!😭"
 }
 
 function checkForWins(humanMove, computerMove) {
@@ -155,14 +156,13 @@ function displayGameResults() {
   show(altSubHeading)
   hide(classicGameIcons)
   displayIconResults(players[humanPlayerName].move, players[computerPlayerName].move)
-  // display icon results
   // display wins for both players
   // add a timeout function and call it here
 }
 
 function displayIconResults(winner, loser) {
-  console.log("Winner:", winner)
-  console.log("Loser:", loser.id)
+  // console.log("Winner:", winner)
+  // console.log("Loser:", loser.id)
   var winnerIcon = createIconImg(winner)
   var loserIcon = createIconImg(loser.id)
   var gameResults = document.getElementById("result")
