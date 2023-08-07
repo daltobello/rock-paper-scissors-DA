@@ -55,7 +55,7 @@ function createPlayer(name) {
       name: name,
       turn: true,
       wins: 0,
-      move: null,``
+      move: null,
     }
   }
 }
