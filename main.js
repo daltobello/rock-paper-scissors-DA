@@ -9,9 +9,9 @@ var resultsDisplay = document.querySelector(".results-display")
 var gameBoardContainer = document.querySelector(".game-board")
 // var gameResults = document.querySelector(".game-results")
 // icons
-var rockIcon = document.querySelector("#happy-rocks-icon")
-var paperIcon = document.querySelector("#happy-paper-icon")
-var scissorsIcon = document.querySelector("#happy-scissors-icon")
+var rockIcon = document.querySelector("#happy-rocks")
+var paperIcon = document.querySelector("#happy-paper")
+var scissorsIcon = document.querySelector("#happy-scissors")
 var tractorIcon = document.querySelector("#tractor-icon")
 var wheatIcon = document.querySelector("#wheat-icon")
 
@@ -163,21 +163,18 @@ function displayGameResults() {
 function displayIconResults(winner, loser) {
   console.log("Winner:", winner)
   console.log("Loser:", loser.id)
-
-  var winnerName = winner.substring(0, winner.indexOf('-icon'))
-  var loserName = loser.id.substring(0, loser.id.indexOf('-icon'))
-
-  var winnerImg = document.createElement("img")
-  var loserImg = document.createElement("img")
-  winnerImg.setAttribute("src", `./assets/${winnerName}.png`)
-  winnerImg.setAttribute("id", winnerName)
-
-  loserImg.setAttribute("src", `./assets/${loserName}.png`)
-  loserImg.setAttribute("id", loserName)
-
+  var winnerIcon = createIconImg(winner)
+  var loserIcon = createIconImg(loser.id)
   var gameResults = document.getElementById("result")
-  gameResults.appendChild(winnerImg)
-  gameResults.appendChild(loserImg)
+  gameResults.appendChild(winnerIcon)
+  gameResults.appendChild(loserIcon)
+}
+
+function createIconImg(iconId) {
+  var iconImg = document.createElement("img")
+  iconImg.setAttribute("src", `./assets/${iconId}.png`)
+  iconImg.setAttribute("id", iconId)
+  return iconImg
 }
 
 // create element. append child. add to blank section. delete from 
