@@ -17,29 +17,19 @@ var scissorsIcon = document.querySelector("#happy-scissors")
 var tractorIcon = document.querySelector("#green-tractor")
 var wheatIcon = document.querySelector("#yellow-wheat")
 
-
-
 // eventListeners
-
 classicGame.addEventListener("click", function () {
   startGame("classic")
-  // gameType = "Classic"
-  // displayClassicGame()
-  // createGame()
 })
 
 difficultGame.addEventListener("click", function () {
   startGame("difficult")
-  // gameType = "Difficult"
-  // displayDifficultGame()
-  // createGame()
 })
 
-classicGameIcons.addEventListener("click", function(event) {
-  if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon) { 
-    clickedIcon = event.target.id
-    takeTurn(players[humanPlayerName], players[computerPlayerName], clickedIcon)
-  } 
+classicGameIcons.addEventListener("click", function (event) {
+  if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon) {
+    takePlayerTurn(event.target.id)
+  }
 })
 
 
@@ -47,10 +37,30 @@ classicGameIcons.addEventListener("click", function(event) {
 var gameBoard = []
 var gameType;
 var players = {}
-var humanPlayerName = "human"
-var computerPlayerName = "computer"
+var human = "human"
+var computer = "computer"
 
 // functions
+function startGame(type) {
+  gameType = type
+  displayGame(type)
+  createGame()
+}
+
+function displayGame(type) {
+  altSubHeading.innerHTML = ""
+  hide(chooseGameHeading)
+  hide(difficultGame)
+  hide(classicGame)
+
+  if (type === "classic") {
+    show(classicGameIcons)
+  } else {
+    show(difficultGameIcons)
+  }
+    show(altSubHeading)
+}
+
 function createPlayer(name) {
   if (!players[name]) {
     players[name] = {
@@ -62,16 +72,9 @@ function createPlayer(name) {
   }
 }
 
-function startGame(type) {
-  gameType = type
-  displayGame()
-  createGame()
-}
-
-
 function createGame() {
-  createPlayer(humanPlayerName)
-  createPlayer(computerPlayerName)
+  createPlayer(human)
+  createPlayer(computer)
   if (gameType === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
   } else {
@@ -79,57 +82,63 @@ function createGame() {
   }
 }
 
-function takeTurn(humanPlayer, computerPlayer, humanMove) {
-  var computerMove;
+function takePlayerTurn(move) {
+  var humanPlayer = players[human]
+  var computerPlayer = players[computer]
   if (humanPlayer.turn) {
-    humanPlayer.turn = !humanPlayer.turn
+    humanPlayer.turn = false
     computerPlayer.turn = true
-    humanPlayer.move = humanMove
-    computerMove = getRandomComputerMove()
+    humanPlayer.move = move
+    var computerMove = getRandomComputerMove()
     computerPlayer.move = computerMove
-    checkGameResults(humanMove, computerMove)
   }
+  checkGameResults(humanPlayer.move, computerPlayer.move)
 }
 
-function checkGameResults(humanPlayerMove, computerPlayerMove) {
- var humanPlayerMove = players[humanPlayerName].move
- var computerPlayerMove = players[computerPlayerName].move.id
-  if (humanPlayerMove === computerPlayerMove) {
-    // setTimeout(displayDraw(), 1000)
+function checkGameResults(humanMove, computerMove) {
+  if (humanMove === computerMove.id) {
     displayDraw()
   } else {
-    checkForWins(humanPlayerMove, computerPlayerMove)
+    handleWinLoss(humanMove, computerMove.id)
   }
+  displayGameResults()
 }
 
-function checkForWins(humanMove, computerMove) {
+function displayDraw() {
+  altSubHeading.innerHTML += "😭It's a draw!😭"
+}
+
+function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
     rock: scissorsIcon,
     paper: rockIcon,
     scissors: paperIcon
   }
 
-  if (winningMoves[humanMove] === computerMove.id) {
-    players[humanPlayerName].wins++
+  if (winningMoves[humanMove] === computerMove) {
+    players[human].wins++
     resetGame()
-  } else if (winningMoves[computerMove] === humanMove.id) {
-    players[computerPlayerName].wins++
+  } else if (winningMoves[computerMove] === humanMove) {
+    players[computer].wins++
     resetGame()
   } else if (humanMove === computerMove) {
-    checkForDraw()
   }
-
-  displayGameResults()
 }
 
 function resetGame() {
-  players[humanPlayerName].turn = true
-  players[computerPlayerName].turn = false
+  players[human].turn = true
+  players[computer].turn = false
 }
 
 function getRandomComputerMove() {
-  var randGameBoardIndex = getRandomIndex(gameBoard)
-  return gameBoard[randGameBoardIndex]
+  var possibleMoves;
+  if (gameType === "classic") {
+    possibleMoves = [rockIcon, paperIcon, scissorsIcon]
+  } else if (gameType === "difficult") {
+    possibleMoves = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
+  }
+  var randGameBoardIndex = getRandomIndex(possibleMoves)
+  return possibleMoves[randGameBoardIndex]
 }
 
 function getRandomIndex(array) {
@@ -145,33 +154,15 @@ function hide(element) {
   element.setAttribute("hidden", "")
 }
 
-function displayClassicGame() {
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(difficultGame)
-  hide(classicGame)
-  show(classicGameIcons)
-}
-
-function displayDifficultGame() {
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(classicGame)
-  hide(difficultGame)
-  show(difficultGameIcons)
-}
-
 function displayGameResults() {
   show(altSubHeading)
   hide(classicGameIcons)
-  displayIconResults(players[humanPlayerName].move, players[computerPlayerName].move)
+  displayIconResults(players[human].move, players[computer].move)
   displayWins()
   // add a timeout function and call it here
 }
 
 function displayIconResults(winner, loser) {
-  // console.log("Winner:", winner)
-  // console.log("Loser:", loser.id)
   var winnerIcon = createIconImg(winner)
   var loserIcon = createIconImg(loser.id)
   var gameResults = document.getElementById("result")
@@ -190,34 +181,10 @@ function createIconImg(iconId) {
   return iconImg
 }
 
-function displayDraw() {
-  hide(classicGameIcons)
-  displayGameResults()
-  altSubHeading.innerHTML = ""
-  altSubHeading.innerHTML += "😭It's a draw!😭"
-}
-
 function displayWins() {
-  humanWins.innerHTML = `Wins: ${players[humanPlayerName].wins}`
-  computerWins.innerHTML = `Wins: ${players[computerPlayerName].wins}`
+  humanWins.innerHTML = `Wins: ${players[human].wins}`
+  computerWins.innerHTML = `Wins: ${players[computer].wins}`
 }
-
-// create element. append child. add to blank section. delete from 
-// based on what the computer chose. add new class. then remove html element so it's not redundant
-// on event listener, del element
-
-// function displayGameResult() {
-//   chooseFighterMsg.innerText = ""
-// }
-
-// classic-game-icons add event listener. then match ids. if event.target.id === icon id.
-
-// show random icon:
-// generate icon. create element and append.child 
-
-
-
-// create el.
 
 
 
