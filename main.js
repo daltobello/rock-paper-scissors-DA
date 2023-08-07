@@ -131,8 +131,14 @@ function resetGame() {
 }
 
 function getRandomComputerMove() {
-  var randGameBoardIndex = getRandomIndex(gameBoard)
-  return gameBoard[randGameBoardIndex]
+  var possibleMoves;
+  if (gameType === "classic") {
+    possibleMoves = [rockIcon, paperIcon, scissorsIcon]
+  } else if (gameType === "difficult") {
+    possibleMoves = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
+  }
+  var randGameBoardIndex = getRandomIndex(possibleMoves)
+  return possibleMoves[randGameBoardIndex]
 }
 
 function getRandomIndex(array) {
