@@ -68,6 +68,19 @@ function startGame(type) {
   createGame()
 }
 
+function displayGame(type) {
+  altSubHeading.innerHTML = ""
+  hide(chooseGameHeading)
+  hide(difficultGame)
+  hide(classicGame)
+
+  if (type ==="classic") {
+    show(classicGameIcons)
+  } else {
+    show(difficultGameIcons)
+  }
+  show(altSubHeading)
+}
 
 function createGame() {
   createPlayer(humanPlayerName)
@@ -146,19 +159,17 @@ function hide(element) {
 }
 
 function displayClassicGame() {
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(difficultGame)
-  hide(classicGame)
-  show(classicGameIcons)
+  // show(altSubHeading)
+  
+
 }
 
 function displayDifficultGame() {
-  show(altSubHeading)
-  hide(chooseGameHeading)
-  hide(classicGame)
-  hide(difficultGame)
-  show(difficultGameIcons)
+  // show(altSubHeading)
+  // hide(chooseGameHeading)
+  // hide(classicGame)
+  // hide(difficultGame)
+
 }
 
 function displayGameResults() {
