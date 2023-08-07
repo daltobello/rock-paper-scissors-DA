@@ -12,8 +12,8 @@ var gameBoardContainer = document.querySelector(".game-board")
 var rockIcon = document.querySelector("#happy-rocks")
 var paperIcon = document.querySelector("#happy-paper")
 var scissorsIcon = document.querySelector("#happy-scissors")
-var tractorIcon = document.querySelector("#tractor-icon")
-var wheatIcon = document.querySelector("#wheat-icon")
+var tractorIcon = document.querySelector("#green-tractor")
+var wheatIcon = document.querySelector("#yellow-wheat")
 
 
 // eventListeners
