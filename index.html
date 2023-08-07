@@ -17,13 +17,13 @@
   <aside class="score-container human">
     <figure class="avatar human-player">👨🏻‍🌾</figure>
     <h3>Human</h3>
-    <h4 class="score">Wins: 0</h4>
+    <h4 class="score human-wins">Wins: 0</h4>
   </aside>
   <main class="game-board">
     <header class="title-container">
       <h1>Rock, Paper, Scissors</h1>
-      <h2 class="choose-game" hidden>Choose your game!</h2>
-      <h2 class="choose-fighter" hidden>Choose your fighter!</h2>
+      <h2 class="choose-game">Choose your game!</h2>
+      <h2 class="alt-sub-heading" hidden>Choose your fighter!</h2>
     </header>
     <section class="game-type">
       <article class="classic-option">
@@ -40,23 +40,28 @@
         <p>plant > scissors & rock</p>
       </article>
     </section>
-    <!-- <section class="game-type-options"> -->
-    <div class="classic-game-icons" hidden>
-      <img src="assets/happy-rocks.png" alt="smiling rocks icon" class="classic-icons" id="rock-icon">
-      <img src="assets/happy-paper.png" alt="smiling paper icon" class="classic-icons" id="paper-icon">
-      <img src="assets/happy-scissors.png" alt="red handled scissors icon" class="classic-icons" id="scissors-icon">
-    </div>
-    <div class="difficult-game-icons" hidden>
-      <img src="assets/green-tractor.png" alt="green farm tractor" class="difficult-icons" id="tractor-icon">
-      <img src="assets/wheat-icon.png" alt="yellow wheat icon" class="difficult-icons" id="wheat-icon">
-    </div>
-    <div class="results-display" id="result"></div>
-    <!-- </section> -->
+    <section class="game-type-options">
+      <div class="classic-icons-container" hidden>
+        <img src="assets/happy-rocks.png" alt="smiling rocks icon" class="classic-icons" id="happy-rocks">
+        <img src="assets/happy-paper.png" alt="smiling paper icon" class="classic-icons" id="happy-paper">
+        <img src="assets/happy-scissors.png" alt="red handled scissors icon" class="classic-icons" id="happy-scissors">
+      </div>
+      <div class="difficult-icons-container" hidden>
+        <img src="assets/happy-rocks.png" alt="smiling rocks icon" class="classic-icons" id="happy-rocks-icon">
+        <img src="assets/happy-paper.png" alt="smiling paper icon" class="classic-icons" id="happy-paper-icon">
+        <img src="assets/happy-scissors.png" alt="red handled scissors icon" class="classic-icons" id="happy-scissors-icon">
+        <img src="assets/green-tractor.png" alt="green farm tractor" class="difficult-icons" id="green-tractor">
+        <img src="assets/yellow-wheat.png" alt="yellow wheat icon" class="difficult-icons" id="yellow-wheat">
+      </div>
+      <div class="game-results" id="result">
+ <!-- game results go here -->
+      </div>
+    </section>
   </main>
   <aside class="score-container computer">
     <figure class="avatar computer-player">💻</figure>
     <h3>Computer</h3>
-    <h4 class="score">Wins: 0</h4>
+    <h4 class="score computer-wins">Wins: 0</h4>
   </aside>
   <script src="main.js"></script>
 </body>
