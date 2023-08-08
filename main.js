@@ -34,7 +34,7 @@ classicGameIcons.addEventListener("click", function (event) {
 
 
 // global variables
-var gameBoard = []
+// var gameBoard = []
 var gameType;
 var players = {}
 var human = "human"
@@ -75,10 +75,18 @@ function createPlayer(name) {
 function createGame() {
   createPlayer(human)
   createPlayer(computer)
+  var gameBoard
+  var classicIcons = [rockIcon, paperIcon, scissorsIcon]
+  var difficultIcons =  [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
+  var icons = []
+
   if (gameType === "classic") {
-    gameBoard = [rockIcon, paperIcon, scissorsIcon]
-  } else {
-    gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
+    icons = classicIcons
+  } else if (gameType === "difficult"){
+    icons = difficultIcons
+  }
+  for (var i = 0; i < icons.length; i++) {
+    gameBoardContainer.appendChild(icons[i].cloneNode(true))
   }
 }
 
@@ -110,16 +118,15 @@ function displayDraw() {
 
 function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
-    rock: scissorsIcon || scissorsIcon && wheatIcon,
-    paper: rockIcon || rockIcon && tractorIcon,
-    scissors: paperIcon || paperIcon && wheatIcon,
-    wheatIcon: scissorsIcon && rockIcon
+    rock: scissorsIcon,
+    paper: rockIcon,
+    scissors: paperIcon
   }
 
-  if (winningMoves[humanMove] === computerMove) {
+  if (winningMoves[humanMove] === computerMove.id) {
     players[human].wins++
     resetGame()
-  } else if (winningMoves[computerMove] === humanMove) {
+  } else if (winningMoves[computerMove] === humanMove.id) {
     players[computer].wins++
     resetGame()
   } else if (humanMove === computerMove) {
