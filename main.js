@@ -102,21 +102,18 @@ function takePlayerTurn(move) {
   checkGameResults(humanPlayer.move, computerPlayer.move)
 }
 
-function checkGameResults(humanMove, computerMove) {
-  if (humanMove === computerMove.id) {
-    displayDraw()
-  } else {
-    handleWinLoss(humanMove, computerMove.id)
-  }
+// function checkGameResults(humanMove, computerMove) {
+//   handleWinLoss(humanMove, computerMove.id)
+//   displayGameResults()
+// }
+
+function handleWinLoss(humanMove, computerMove) {
+  var result = updateGameResults(humanMove, computerMove)
+  updateDOMResult(result)
   displayGameResults()
 }
 
-function displayDraw() {
-  altSubHeading.innerHTML = ""
-  altSubHeading.innerHTML += "😭It's a draw!😭"
-}
-
-function handleWinLoss(humanMove, computerMove) {
+function updateGameResults(humanMove, computerMove) {
   var winningMoves = {
     "happy-rocks": ["happy-scissors", "yellow-wheat"],
     "happy-paper": ["happy-rocks", "green-tractor"],
@@ -127,15 +124,25 @@ function handleWinLoss(humanMove, computerMove) {
 
   if (winningMoves[humanMove].includes(computerMove)) {
     players[human].wins++
-    altSubHeading.innerHTML = "" 
-    altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
-    resetGame()
+    return "human"
   } else if (winningMoves[computerMove].includes(humanMove)) {
     players[computer].wins++
-    altSubHeading.innerHTML = "" 
-    altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
-    resetGame()
+    return "computer"
+  } else {
+    return "draw"
   }
+}
+
+function updateDOMResult(result) {
+  altSubHeading.innerHTML = ""
+  if (result === "human") {
+    altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾"
+  } else if (result === "computer") {
+    altSubHeading.innerHTML += "💻Computer won this round!💻"
+  } else {
+    altSubHeading.innerHTML += "😭It's a draw!😭"
+  }
+  resetGame()
 }
 
 function resetGame() {
