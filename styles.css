@@ -18,7 +18,6 @@ h1 {
 h2 {
   font-size: 1.5em;
   font-weight: 200;
-  margin-bottom: 15%;
 }
 
 main {
@@ -136,9 +135,8 @@ h5 {
 .classic-icons-container,
 .difficult-icons-container,
 .game-results {
-  visibility: visible;
   height: 20%;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 10%;
