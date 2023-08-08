@@ -80,6 +80,26 @@ main {
   margin-top: 6%;
 }
 
+.switch-game-container {
+  display: flex;
+  height: 4%;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50%;
+  border-radius: 20%;
+  
+}
+
+.switch-game-type {
+  background-color: #382633;
+  text-transform: uppercase;
+  border-radius: 3%;
+  border: none;
+  cursor: pointer;
+
+  
+}
+
 .game-type {
   display: flex;
   flex-direction: column;
