@@ -31,9 +31,8 @@ classicGameIcons.addEventListener("click", function (event) {
 
 difficultGameIcons.addEventListener("click", function (event) {
   if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon || event.target === tractorIcon || event.target === wheatIcon) {
-    console.log(event.target.id)
-    takePlayerTurn(event.target.id)
   }
+  takePlayerTurn(event.target.id)
 })
 
 
@@ -99,6 +98,8 @@ function takePlayerTurn(move) {
 }
 
 function checkGameResults(humanMove, computerMove) {
+  // console.log("Human:", humanMove)
+  // console.log("Computer:", computerMove.id)
   if (humanMove === computerMove.id) {
     displayDraw()
   } else {
@@ -112,24 +113,44 @@ function displayDraw() {
 }
 
 function handleWinLoss(humanMove, computerMove) {
+  // var winningMoves = {
+  //   'happy-rocks': 'happy-scissors' || 'yellow-wheat',
+  //   'happy-paper': 'happy-rocks' || 'green-tractor',
+  //   'happy-scissors': 'happy-paper' || 'yellow-wheat',
+  //   'yellow-wheat': 'happy-scissors' || 'happy-rocks'
+  // }
   var winningMoves = {
-    'happy-rocks': 'happy-scissors',
-    'happy-paper': 'happy-rocks',
-    'happy-scissors': 'happy-paper'
+    'happy-rocks': ['happy-scissors', 'yellow-wheat'],
+    'happy-paper': ['happy-rocks', 'green-tractor'],
+    'happy-scissors': ['happy-paper', 'yellow-wheat'],
+    'yellow-wheat': ['happy-paper', 'green-tractor'],
+    'green-tractor': ['happy-scissors', 'happy-rocks']
   }
-  console.log("computer:", computerMove)
-  console.log("human:", humanMove)
-
-  if (winningMoves[humanMove] === computerMove) {
+  // console.log(winningMoves[humanMove])
+console.log("computer move:", computerMove)
+console.log("human move:", humanMove)
+  if (winningMoves[humanMove].includes(computerMove)) {
     players[human].wins++
     altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
     resetGame()
-  } else if (winningMoves[computerMove] === humanMove) {
+  } else if (winningMoves[computerMove].includes(humanMove)) {
     players[computer].wins++
     altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
     resetGame()
   }
 }
+
+// if (winningMoves[humanMove] === computerMove) {
+//   players[human].wins++
+//   altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
+//   resetGame()
+// } else if (winningMoves[computerMove] === humanMove) {
+//   players[computer].wins++
+//   altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
+//   resetGame()
+// }
+// }
+
 
 function resetGame() {
   players[human].turn = true
