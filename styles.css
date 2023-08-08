@@ -70,19 +70,23 @@ main {
 
 .switch-game-container {
   display: flex;
-  height: 4%;
-  width: 100%;
   justify-content: center;
+  width: 100%;
   margin-top: 50%;
-  border-radius: 20%;
-
 }
 
 .switch-game-type {
+  height: 40px;
+  width: 125px;
   background-color: #382633;
   text-transform: uppercase;
-  border-radius: 3%;
+  border-radius: 5px;
   border: none;
+
+}
+
+.switch-game-type:hover {
+  background-color:  #493241;
   cursor: pointer;
 }
 
@@ -145,8 +149,9 @@ h5 {
 .classic-icons-container,
 .difficult-icons-container,
 .game-results {
-  margin-right: 1.5%;
-  margin-right: 1.5%;
+  margin: 1.5%;
+  margin: 1.5%;
+  height: 25%;
 }
 
 .classic-icons:hover,
