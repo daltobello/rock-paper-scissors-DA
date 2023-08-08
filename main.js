@@ -13,6 +13,7 @@ var paperIcon = document.querySelector("#happy-paper")
 var scissorsIcon = document.querySelector("#happy-scissors")
 var tractorIcon = document.querySelector("#green-tractor")
 var wheatIcon = document.querySelector("#yellow-wheat")
+var changeGame = document.querySelector(".switch-game-type")
 
 // eventListeners
 classicGame.addEventListener("click", function () {
@@ -35,6 +36,9 @@ difficultGameIcons.addEventListener("click", function (event) {
   takePlayerTurn(event.target.id)
 })
 
+changeGame.addEventListener("click", function() {
+  displayHome()
+})
 
 // global variables
 var gameBoard;
@@ -67,17 +71,18 @@ function startGame(type) {
 }
 
 function displayGame(type) {
-  altSubHeading.innerHTML = ""
   hide(chooseGameHeading)
   hide(difficultGame)
   hide(classicGame)
 
   if (type === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
+    show(altSubHeading)
     show(classicGameIcons)
     hide(difficultGameIcons)
   } else if (type === "difficult"){
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
+    show(altSubHeading)
     show(difficultGameIcons)
     hide(classicGameIcons)
   }
@@ -107,24 +112,27 @@ function checkGameResults(humanMove, computerMove) {
 }
 
 function displayDraw() {
+  altSubHeading.innerHTML = ""
   altSubHeading.innerHTML += "😭It's a draw!😭"
 }
 
 function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
-    'happy-rocks': ['happy-scissors', 'yellow-wheat'],
-    'happy-paper': ['happy-rocks', 'green-tractor'],
-    'happy-scissors': ['happy-paper', 'yellow-wheat'],
-    'yellow-wheat': ['happy-paper', 'green-tractor'],
-    'green-tractor': ['happy-scissors', 'happy-rocks']
+    "happy-rocks": ["happy-scissors", "yellow-wheat"],
+    "happy-paper": ["happy-rocks", "green-tractor"],
+    "happy-scissors": ["happy-paper", "yellow-wheat"],
+    "yellow-wheat": ["happy-paper", "green-tractor"],
+    "green-tractor": ["happy-scissors", "happy-rocks"]
   }
 
   if (winningMoves[humanMove].includes(computerMove)) {
     players[human].wins++
+    altSubHeading.innerHTML = "" 
     altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
     resetGame()
   } else if (winningMoves[computerMove].includes(humanMove)) {
     players[computer].wins++
+    altSubHeading.innerHTML = "" 
     altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
     resetGame()
   }
@@ -160,11 +168,13 @@ function hide(element) {
 }
 
 function displayGameResults() {
-  show(altSubHeading)
-  hide(classicGameIcons)
+  setTimeout(clearIconResults, 1000)
   displayIconResults(players[human].move, players[computer].move)
   displayWins()
-  // add a timeout function and call it here
+  show(altSubHeading)
+  hide(classicGameIcons)
+  hide(difficultGameIcons)
+  show(changeGame)
 }
 
 function displayIconResults(winner, loser) {
@@ -175,11 +185,6 @@ function displayIconResults(winner, loser) {
   gameResults.appendChild(loserIcon)
 }
 
-function removeNewIcon() {
-  gameResults.removeChild(gameResults.firstElementChild);
-  // use this function
-}
-
 function createIconImg(iconId) {
   var iconImg = document.createElement("img")
   iconImg.setAttribute("src", `./assets/${iconId}.png`)
@@ -187,9 +192,26 @@ function createIconImg(iconId) {
   return iconImg
 }
 
+function clearIconResults() {
+  var gameResults = document.getElementById("result");
+  var childCount = gameResults.childElementCount;
+  for (var i = 0; i < childCount; i++) {
+    gameResults.removeChild(gameResults.lastChild);
+  }
+}
+
 function displayWins() {
   humanWins.innerHTML = `Wins: ${players[human].wins}`
   computerWins.innerHTML = `Wins: ${players[computer].wins}`
+}
+
+function displayHome() {
+  altSubHeading.innerHTML = ""
+  altSubHeading.innerHTML += "Choose your game!"
+  show(difficultGame)
+  show(classicGame)
+  hide(classicGameIcons)
+  hide(difficultGameIcons)
 }
 
 
