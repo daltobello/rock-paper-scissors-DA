@@ -74,17 +74,12 @@ function displayGame(type) {
   hide(chooseGameHeading)
   hide(difficultGame)
   hide(classicGame)
-
   if (type === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
-    show(altSubHeading)
-    show(classicGameIcons)
-    hide(difficultGameIcons)
+    showClassicGame()
   } else if (type === "difficult"){
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
-    show(altSubHeading)
-    show(difficultGameIcons)
-    hide(classicGameIcons)
+    showDifficultGame() 
   }
     show(altSubHeading)
 }
@@ -134,9 +129,10 @@ function updateDOMResult(result) {
     altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾"
   } else if (result === "computer") {
     altSubHeading.innerHTML += "💻Computer won this round!💻"
-  } else {
+  } else if (result === "draw") {
     altSubHeading.innerHTML += "😭It's a draw!😭"
   }
+  setTimeout(resetAltSubHeading, 1500)
   resetGame()
 }
 
@@ -169,15 +165,35 @@ function hide(element) {
   element.setAttribute("hidden", "")
 }
 
+function showClassicGame() {
+  show(altSubHeading)
+  show(classicGameIcons)
+  hide(difficultGameIcons)
+}
+
+function showDifficultGame() {
+  show(altSubHeading)
+  show(difficultGameIcons)
+  hide(classicGameIcons)
+}
+
 function displayGameResults() {
-  setTimeout(clearIconResults, 1000)
+  if (gameType === "classic") {
+    hide(classicGameIcons)
+    show(changeGame)
+    setTimeout(showClassicGame, 1500)
+  } else if (gameType === "difficult") {
+    hide(difficultGameIcons)
+    show(changeGame)
+    setTimeout(showDifficultGame, 1500)
+  }
+  setTimeout(updateDOMResult, 1500)
   displayIconResults(players[human].move, players[computer].move)
   displayWins()
-  show(altSubHeading)
-  hide(classicGameIcons)
-  hide(difficultGameIcons)
-  show(changeGame)
+  setTimeout(clearIconResults, 1500)
+  setTimeout(resetAltSubHeading, 1500)
 }
+
 
 function displayIconResults(winner, loser) {
   var winnerIcon = createIconImg(winner)
@@ -216,7 +232,7 @@ function displayHome() {
   hide(difficultGameIcons)
 }
 
-
-
-// function that takes you home
-// setTimeout function when go home
+function resetAltSubHeading() {
+  altSubHeading.innerHTML = "";
+  altSubHeading.innerHTML += "Choose your fighter!"
+}
