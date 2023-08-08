@@ -99,16 +99,11 @@ function takePlayerTurn(move) {
     var computerMove = getRandomComputerMove()
     computerPlayer.move = computerMove
   }
-  checkGameResults(humanPlayer.move, computerPlayer.move)
+  handleWinLoss(humanPlayer.move, computerPlayer.move)
 }
 
-// function checkGameResults(humanMove, computerMove) {
-//   handleWinLoss(humanMove, computerMove.id)
-//   displayGameResults()
-// }
-
 function handleWinLoss(humanMove, computerMove) {
-  var result = updateGameResults(humanMove, computerMove)
+  var result = updateGameResults(humanMove, computerMove.id)
   updateDOMResult(result)
   displayGameResults()
 }
