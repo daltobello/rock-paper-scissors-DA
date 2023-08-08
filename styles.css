@@ -137,11 +137,16 @@ h5 {
   margin-top: 10%;
 }
 
-.classic-icons,
-.difficult-icons,
+.classic-icons-container,
+.difficult-icons-container,
 .game-results {
   margin-right: 1.5%;
   margin-right: 1.5%;
+}
+
+.classic-icons:hover,
+.difficult-icons:hover{
+cursor: pointer;
 }
 
 [hidden] {
