@@ -29,6 +29,13 @@ classicGameIcons.addEventListener("click", function (event) {
   }
 })
 
+difficultGameIcons.addEventListener("click", function (event) {
+  if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon || event.target === tractorIcon || event.target === wheatIcon) {
+    console.log(event.target.id)
+    takePlayerTurn(event.target.id)
+  }
+})
+
 
 // global variables
 var gameBoard;
@@ -115,9 +122,11 @@ function handleWinLoss(humanMove, computerMove) {
 
   if (winningMoves[humanMove] === computerMove) {
     players[human].wins++
+    altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
     resetGame()
   } else if (winningMoves[computerMove] === humanMove) {
     players[computer].wins++
+    altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
     resetGame()
   }
 }
