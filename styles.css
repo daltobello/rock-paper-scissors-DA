@@ -92,6 +92,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 5%;
 }
 
 .game-type :hover {
@@ -139,7 +140,6 @@ h5 {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 10%;
 }
 
 .classic-icons-container,
