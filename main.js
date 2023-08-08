@@ -6,7 +6,7 @@ var difficultGameIcons = document.querySelector(".difficult-icons-container")
 var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
-var gameBoardContainer = document.querySelector(".game-board")
+// var gameBoardContainer = document.querySelector(".game-board")
 var humanWins = document.querySelector(".human-wins")
 var computerWins = document.querySelector(".computer-wins")
 // var gameResults = document.querySelector(".game-results")
@@ -34,33 +34,13 @@ classicGameIcons.addEventListener("click", function (event) {
 
 
 // global variables
-// var gameBoard = []
+// var gameBoard;
 var gameType;
 var players = {}
 var human = "human"
 var computer = "computer"
 
 // functions
-function startGame(type) {
-  gameType = type
-  displayGame(type)
-  createGame()
-}
-
-function displayGame(type) {
-  altSubHeading.innerHTML = ""
-  hide(chooseGameHeading)
-  hide(difficultGame)
-  hide(classicGame)
-
-  if (type === "classic") {
-    show(classicGameIcons)
-  } else {
-    show(difficultGameIcons)
-  }
-    show(altSubHeading)
-}
-
 function createPlayer(name) {
   if (!players[name]) {
     players[name] = {
@@ -75,19 +55,28 @@ function createPlayer(name) {
 function createGame() {
   createPlayer(human)
   createPlayer(computer)
-  var gameBoard
-  var classicIcons = [rockIcon, paperIcon, scissorsIcon]
-  var difficultIcons =  [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
-  var icons = []
+}
 
-  if (gameType === "classic") {
-    icons = classicIcons
-  } else if (gameType === "difficult"){
-    icons = difficultIcons
+function startGame(type) {
+  gameType = type
+  displayGame(type)
+  createGame()
+}
+
+function displayGame(type) {
+  altSubHeading.innerHTML = ""
+  hide(chooseGameHeading)
+  hide(difficultGame)
+  hide(classicGame)
+
+  if (type === "classic") {
+    show(classicGameIcons)
+    hide(difficultGameIcons)
+  } else if (type === "difficult"){
+    show(difficultGameIcons)
+    hide(classicGameIcons)
   }
-  for (var i = 0; i < icons.length; i++) {
-    gameBoardContainer.appendChild(icons[i].cloneNode(true))
-  }
+    show(altSubHeading)
 }
 
 function takePlayerTurn(move) {
@@ -104,7 +93,7 @@ function takePlayerTurn(move) {
 }
 
 function checkGameResults(humanMove, computerMove) {
-  if (humanMove === computerMove.id) {
+  if (humanMove === computerMove) {
     displayDraw()
   } else {
     handleWinLoss(humanMove, computerMove.id)
@@ -129,7 +118,6 @@ function handleWinLoss(humanMove, computerMove) {
   } else if (winningMoves[computerMove] === humanMove.id) {
     players[computer].wins++
     resetGame()
-  } else if (humanMove === computerMove) {
   }
 }
 
