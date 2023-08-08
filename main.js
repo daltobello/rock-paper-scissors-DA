@@ -194,6 +194,10 @@ function displayGameResults() {
   setTimeout(resetAltSubHeading, 1500)
 }
 
+function resetAltSubHeading() {
+  altSubHeading.innerHTML = "";
+  altSubHeading.innerHTML += "Choose your fighter!"
+}
 
 function displayIconResults(winner, loser) {
   var winnerIcon = createIconImg(winner)
@@ -230,9 +234,4 @@ function displayHome() {
   show(classicGame)
   hide(classicGameIcons)
   hide(difficultGameIcons)
-}
-
-function resetAltSubHeading() {
-  altSubHeading.innerHTML = "";
-  altSubHeading.innerHTML += "Choose your fighter!"
 }
