@@ -6,11 +6,8 @@ var difficultGameIcons = document.querySelector(".difficult-icons-container")
 var altSubHeading = document.querySelector(".alt-sub-heading")
 var chooseGameHeading = document.querySelector(".choose-game")
 var resultsDisplay = document.querySelector(".results-display")
-// var gameBoardContainer = document.querySelector(".game-board")
 var humanWins = document.querySelector(".human-wins")
 var computerWins = document.querySelector(".computer-wins")
-// var gameResults = document.querySelector(".game-results")
-// icons
 var rockIcon = document.querySelector("#happy-rocks")
 var paperIcon = document.querySelector("#happy-paper")
 var scissorsIcon = document.querySelector("#happy-scissors")
@@ -34,7 +31,7 @@ classicGameIcons.addEventListener("click", function (event) {
 
 
 // global variables
-// var gameBoard;
+var gameBoard;
 var gameType;
 var players = {}
 var human = "human"
@@ -70,9 +67,11 @@ function displayGame(type) {
   hide(classicGame)
 
   if (type === "classic") {
+    gameBoard = [rockIcon, paperIcon, scissorsIcon]
     show(classicGameIcons)
     hide(difficultGameIcons)
   } else if (type === "difficult"){
+    gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
     show(difficultGameIcons)
     hide(classicGameIcons)
   }
@@ -93,7 +92,7 @@ function takePlayerTurn(move) {
 }
 
 function checkGameResults(humanMove, computerMove) {
-  if (humanMove === computerMove) {
+  if (humanMove === computerMove.id) {
     displayDraw()
   } else {
     handleWinLoss(humanMove, computerMove.id)
@@ -107,15 +106,17 @@ function displayDraw() {
 
 function handleWinLoss(humanMove, computerMove) {
   var winningMoves = {
-    rock: scissorsIcon,
-    paper: rockIcon,
-    scissors: paperIcon
+    'happy-rocks': 'happy-scissors',
+    'happy-paper': 'happy-rocks',
+    'happy-scissors': 'happy-paper'
   }
+  console.log("computer:", computerMove)
+  console.log("human:", humanMove)
 
-  if (winningMoves[humanMove] === computerMove.id) {
+  if (winningMoves[humanMove] === computerMove) {
     players[human].wins++
     resetGame()
-  } else if (winningMoves[computerMove] === humanMove.id) {
+  } else if (winningMoves[computerMove] === humanMove) {
     players[computer].wins++
     resetGame()
   }
@@ -168,6 +169,7 @@ function displayIconResults(winner, loser) {
 
 function removeNewIcon() {
   gameResults.removeChild(gameResults.firstElementChild);
+  // use this function
 }
 
 function createIconImg(iconId) {
