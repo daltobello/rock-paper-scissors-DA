@@ -13,6 +13,7 @@ var paperIcon = document.querySelector("#happy-paper")
 var scissorsIcon = document.querySelector("#happy-scissors")
 var tractorIcon = document.querySelector("#green-tractor")
 var wheatIcon = document.querySelector("#yellow-wheat")
+var changeGame = document.querySelector(".switch-game-type")
 
 // eventListeners
 classicGame.addEventListener("click", function () {
@@ -31,11 +32,13 @@ classicGameIcons.addEventListener("click", function (event) {
 
 difficultGameIcons.addEventListener("click", function (event) {
   if (event.target === rockIcon || event.target === scissorsIcon || event.target === paperIcon || event.target === tractorIcon || event.target === wheatIcon) {
-    console.log(event.target.id)
-    takePlayerTurn(event.target.id)
   }
+  takePlayerTurn(event.target.id)
 })
 
+changeGame.addEventListener("click", function() {
+  displayHome()
+})
 
 // global variables
 var gameBoard;
@@ -68,19 +71,15 @@ function startGame(type) {
 }
 
 function displayGame(type) {
-  altSubHeading.innerHTML = ""
   hide(chooseGameHeading)
   hide(difficultGame)
   hide(classicGame)
-
   if (type === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
-    show(classicGameIcons)
-    hide(difficultGameIcons)
+    showClassicGame()
   } else if (type === "difficult"){
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
-    show(difficultGameIcons)
-    hide(classicGameIcons)
+    showDifficultGame() 
   }
     show(altSubHeading)
 }
@@ -95,40 +94,46 @@ function takePlayerTurn(move) {
     var computerMove = getRandomComputerMove()
     computerPlayer.move = computerMove
   }
-  checkGameResults(humanPlayer.move, computerPlayer.move)
-}
-
-function checkGameResults(humanMove, computerMove) {
-  if (humanMove === computerMove.id) {
-    displayDraw()
-  } else {
-    handleWinLoss(humanMove, computerMove.id)
-  }
-  displayGameResults()
-}
-
-function displayDraw() {
-  altSubHeading.innerHTML += "😭It's a draw!😭"
+  handleWinLoss(humanPlayer.move, computerPlayer.move)
 }
 
 function handleWinLoss(humanMove, computerMove) {
-  var winningMoves = {
-    'happy-rocks': 'happy-scissors',
-    'happy-paper': 'happy-rocks',
-    'happy-scissors': 'happy-paper'
-  }
-  console.log("computer:", computerMove)
-  console.log("human:", humanMove)
+  var result = updateGameResults(humanMove, computerMove.id)
+  updateDOMResult(result)
+  displayGameResults()
+}
 
-  if (winningMoves[humanMove] === computerMove) {
-    players[human].wins++
-    altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾" // separate concerns
-    resetGame()
-  } else if (winningMoves[computerMove] === humanMove) {
-    players[computer].wins++
-    altSubHeading.innerHTML += "💻Computer won this round!💻" // separate concerns
-    resetGame()
+function updateGameResults(humanMove, computerMove) {
+  var winningMoves = {
+    "happy-rocks": ["happy-scissors", "yellow-wheat"],
+    "happy-paper": ["happy-rocks", "green-tractor"],
+    "happy-scissors": ["happy-paper", "yellow-wheat"],
+    "yellow-wheat": ["happy-paper", "green-tractor"],
+    "green-tractor": ["happy-scissors", "happy-rocks"]
   }
+
+  if (winningMoves[humanMove].includes(computerMove)) {
+    players[human].wins++
+    return "human"
+  } else if (winningMoves[computerMove].includes(humanMove)) {
+    players[computer].wins++
+    return "computer"
+  } else {
+    return "draw"
+  }
+}
+
+function updateDOMResult(result) {
+  altSubHeading.innerHTML = ""
+  if (result === "human") {
+    altSubHeading.innerHTML += "👨🏻‍🌾You won this round!👨🏻‍🌾"
+  } else if (result === "computer") {
+    altSubHeading.innerHTML += "💻Computer won this round!💻"
+  } else if (result === "draw") {
+    altSubHeading.innerHTML += "😭It's a draw!😭"
+  }
+  setTimeout(resetAltSubHeading, 1500)
+  resetGame()
 }
 
 function resetGame() {
@@ -160,12 +165,38 @@ function hide(element) {
   element.setAttribute("hidden", "")
 }
 
-function displayGameResults() {
+function showClassicGame() {
   show(altSubHeading)
+  show(classicGameIcons)
+  hide(difficultGameIcons)
+}
+
+function showDifficultGame() {
+  show(altSubHeading)
+  show(difficultGameIcons)
   hide(classicGameIcons)
+}
+
+function displayGameResults() {
+  if (gameType === "classic") {
+    hide(classicGameIcons)
+    show(changeGame)
+    setTimeout(showClassicGame, 1500)
+  } else if (gameType === "difficult") {
+    hide(difficultGameIcons)
+    show(changeGame)
+    setTimeout(showDifficultGame, 1500)
+  }
+  setTimeout(updateDOMResult, 1500)
   displayIconResults(players[human].move, players[computer].move)
   displayWins()
-  // add a timeout function and call it here
+  setTimeout(clearIconResults, 1500)
+  setTimeout(resetAltSubHeading, 1500)
+}
+
+function resetAltSubHeading() {
+  altSubHeading.innerHTML = "";
+  altSubHeading.innerHTML += "Choose your fighter!"
 }
 
 function displayIconResults(winner, loser) {
@@ -176,11 +207,6 @@ function displayIconResults(winner, loser) {
   gameResults.appendChild(loserIcon)
 }
 
-function removeNewIcon() {
-  gameResults.removeChild(gameResults.firstElementChild);
-  // use this function
-}
-
 function createIconImg(iconId) {
   var iconImg = document.createElement("img")
   iconImg.setAttribute("src", `./assets/${iconId}.png`)
@@ -188,12 +214,24 @@ function createIconImg(iconId) {
   return iconImg
 }
 
+function clearIconResults() {
+  var gameResults = document.getElementById("result");
+  var childCount = gameResults.childElementCount;
+  for (var i = 0; i < childCount; i++) {
+    gameResults.removeChild(gameResults.lastChild);
+  }
+}
+
 function displayWins() {
   humanWins.innerHTML = `Wins: ${players[human].wins}`
   computerWins.innerHTML = `Wins: ${players[computer].wins}`
 }
 
-
-
-// function that takes you home
-// setTimeout function when go home
+function displayHome() {
+  altSubHeading.innerHTML = ""
+  altSubHeading.innerHTML += "Choose your game!"
+  show(difficultGame)
+  show(classicGame)
+  hide(classicGameIcons)
+  hide(difficultGameIcons)
+}
