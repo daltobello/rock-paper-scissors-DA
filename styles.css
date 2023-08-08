@@ -1,13 +1,3 @@
-/* * { background-color: rgba(255,0,0,.2); }
-* * { background-color: rgba(0,255,0,.2); }
-* * * { background-color: rgba(0,0,255,.2); }
-* * * * { background-color: rgba(255,0,255,.2); }
-* * * * * { background-color: rgba(0,255,255,.2); }
-* * * * * * { background-color: rgba(255,255,0,.2); }
-* * * * * * * { background-color: rgba(255,0,0,.2); }
-* * * * * * * * { background-color: rgba(0,255,0,.2); }
-* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
-
 * {
   font-family: 'Inter', sans-serif;
   color: white;
@@ -86,7 +76,7 @@ main {
   justify-content: center;
   margin-top: 50%;
   border-radius: 20%;
-  
+
 }
 
 .switch-game-type {
@@ -95,8 +85,6 @@ main {
   border-radius: 3%;
   border: none;
   cursor: pointer;
-
-  
 }
 
 .game-type {
@@ -164,8 +152,8 @@ h5 {
 }
 
 .classic-icons:hover,
-.difficult-icons:hover{
-cursor: pointer;
+.difficult-icons:hover {
+  cursor: pointer;
 }
 
 [hidden] {
