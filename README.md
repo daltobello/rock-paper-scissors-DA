@@ -11,6 +11,9 @@
 ## Preview of App:
 ![RPS_App_Preview_01](https://user-images.githubusercontent.com/130494366/259272326-e3eec9ef-2ed5-41ef-a9bf-1b7defa2098a.gif)
 
+## Context:
+Rock, Paper, Scissors is my final solo project showcase for Mod 1 at Turing.
+
 ## Contributors:
 [Devin Altobello](https://github.com/alto-fx)
 
