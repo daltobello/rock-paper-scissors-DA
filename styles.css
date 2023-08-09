@@ -117,16 +117,15 @@ h5 {
 
 .classic-option,
 .difficult-option {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   height: 100%;
   width: 24%;
   background-color: #382633;
   border-radius: 6%;
   padding-top: 6%;
   padding-bottom: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-type-options {
