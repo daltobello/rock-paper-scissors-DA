@@ -9,7 +9,7 @@
 - Enjoy!
 
 ## Preview of App:
-![RPS_App_Preview_01](https://user-images.githubusercontent.com/130494366/259272326-e3eec9ef-2ed5-41ef-a9bf-1b7defa2098a.gif)
+![RPS_App_Preview_04](https://user-images.githubusercontent.com/130494366/259562077-1a229856-ede1-4bf6-9303-ed36fc324e47.gif)
 
 ## Context:
 Rock, Paper, Scissors is my final solo project showcase for Mod 1 at Turing.
@@ -25,13 +25,13 @@ Rock, Paper, Scissors is my final solo project showcase for Mod 1 at Turing.
 - Build out functionality using functions that follow SRP
 - Manipulate the page after it has loaded: adding, removing, and updating elements, first in the Data Model and then on the DOM
 - Document changes with atomic commits
-Tech used: Javascript, CSS, HTML, Github, VS Code, debugger, dev tools. 
+- Tech used: Javascript, CSS, HTML, Github, VS Code, debugger, dev tools. 
 Resources used: MDN Docs, Google, Stack Overflow.
 
 ## Wins: 
-- Writing concise and reusable functions, many of which pass data through parameters
+- Writing concise and reusable functions, many of which pass data through parameters/arguments
 - Using debugger to isolate and fix errors
-- Using bracket notation in several functions, including a function that keeps track of the game logic in an organized way.
+- Using bracket notation in several functions, including a function that keeps track of the winning moves game logic in an organized way.
 ## Challenges:
 - Learning to group functions when using setTimeout to delay their execution
 - Balancing refactoring code for readability and reusability with benchmark completion
