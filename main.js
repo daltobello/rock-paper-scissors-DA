@@ -36,7 +36,7 @@ difficultGameIcons.addEventListener("click", function (event) {
   takePlayerTurn(event.target.id)
 })
 
-changeGame.addEventListener("click", function() {
+changeGame.addEventListener("click", function () {
   displayHome()
 })
 
@@ -77,11 +77,11 @@ function displayGame(type) {
   if (type === "classic") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon]
     showClassicGame()
-  } else if (type === "difficult"){
+  } else if (type === "difficult") {
     gameBoard = [rockIcon, paperIcon, scissorsIcon, tractorIcon, wheatIcon]
-    showDifficultGame() 
+    showDifficultGame()
   }
-    show(altSubHeading)
+  show(altSubHeading)
 }
 
 function takePlayerTurn(move) {
@@ -132,7 +132,6 @@ function updateDOMResult(result) {
   } else if (result === "draw") {
     altSubHeading.innerHTML += "😭It's a draw!😭"
   }
-  setTimeout(resetAltSubHeading, 1500)
   resetGame()
 }
 
@@ -181,17 +180,22 @@ function displayGameResults() {
   if (gameType === "classic") {
     hide(classicGameIcons)
     show(changeGame)
-    setTimeout(showClassicGame, 1500)
   } else if (gameType === "difficult") {
     hide(difficultGameIcons)
     show(changeGame)
-    setTimeout(showDifficultGame, 1500)
   }
-  setTimeout(updateDOMResult, 1500)
   displayIconResults(players[human].move, players[computer].move)
   displayWins()
-  setTimeout(clearIconResults, 1500)
-  setTimeout(resetAltSubHeading, 1500)
+  setTimeout(function () {
+    if (gameType === "classic") {
+      showClassicGame()
+    } else if (gameType === "difficult") {
+      showDifficultGame()
+    }
+    updateDOMResult()
+    clearIconResults()
+    resetAltSubHeading()
+  }, 1500)
 }
 
 function resetAltSubHeading() {
@@ -228,6 +232,7 @@ function displayWins() {
 }
 
 function displayHome() {
+  console.log("clicked")
   altSubHeading.innerHTML = ""
   altSubHeading.innerHTML += "Choose your game!"
   show(difficultGame)
