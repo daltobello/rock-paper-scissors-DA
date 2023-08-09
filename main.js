@@ -232,7 +232,6 @@ function displayWins() {
 }
 
 function displayHome() {
-  console.log("clicked")
   altSubHeading.innerHTML = ""
   altSubHeading.innerHTML += "Choose your game!"
   show(difficultGame)
