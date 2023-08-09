@@ -177,6 +177,7 @@ function showDifficultGame() {
 }
 
 function displayGameResults() {
+  var gameResults = document.getElementById("result")
   if (gameType === "classic") {
     hide(classicGameIcons)
     show(changeGame)
@@ -184,7 +185,7 @@ function displayGameResults() {
     hide(difficultGameIcons)
     show(changeGame)
   }
-  displayIconResults(players[human].move, players[computer].move)
+  displayIconResults(players[human].move, players[computer].move, gameResults)
   displayWins()
   setTimeout(function () {
     if (gameType === "classic") {
@@ -193,20 +194,19 @@ function displayGameResults() {
       showDifficultGame()
     }
     updateDOMResult()
-    clearIconResults()
+    clearIconResults(gameResults)
     resetAltSubHeading()
   }, 1500)
 }
 
 function resetAltSubHeading() {
-  altSubHeading.innerHTML = "";
+  altSubHeading.innerHTML = ""
   altSubHeading.innerHTML += "Choose your fighter!"
 }
 
-function displayIconResults(winner, loser) {
+function displayIconResults(winner, loser, gameResults) {
   var winnerIcon = createIconImg(winner)
   var loserIcon = createIconImg(loser.id)
-  var gameResults = document.getElementById("result")
   gameResults.appendChild(winnerIcon)
   gameResults.appendChild(loserIcon)
 }
@@ -218,11 +218,10 @@ function createIconImg(iconId) {
   return iconImg
 }
 
-function clearIconResults() {
-  var gameResults = document.getElementById("result");
-  var childCount = gameResults.childElementCount;
+function clearIconResults(gameResults) {
+  var childCount = gameResults.childElementCount
   for (var i = 0; i < childCount; i++) {
-    gameResults.removeChild(gameResults.lastChild);
+    gameResults.removeChild(gameResults.lastChild)
   }
 }
 
